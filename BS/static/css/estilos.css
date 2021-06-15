@@ -1,0 +1,82 @@
+@import url(menu.css);
+@import url(banner.css);
+@import url(bienvenida.css);
+@import url(blog.css);
+@import url(info.css);
+@import url(contacto.css);
+@import url(quienes_somos.css);
+@import url(servicios.css);
+@import url(informaciones.css);
+@import url(banner_sucursal.css);
+@import url(barbers.css);
+@import url(agendarhora.css);
+@import url(iniciosesion.css);
+@import url(registrate.css);
+@import url(contactanos);
+* {
+    margin: 0%;
+    padding: 0%;
+    /*box-sizing: border-box*/
+    ;
+}
+
+body {
+    background: rgb(17, 16, 16);
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-image: url(../img/cortes_y_mas/mennu2.jpg);
+    color: antiquewhite;
+    position: fixed;
+    z-index: 100;
+}
+
+h1 {
+    float: left;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+
+/*.contenedor {
+    width: fit-content;
+
+}*/
+
+#contenedor-logo-principal {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+#contenedor-logo-principal>img {
+    width: 50px;
+    margin-left: 10px;
+    background: transparent;
+}
+
+footer .footer-pie {
+    margin-top: 50px;
+    text-align: center;
+    /*padding: center;*/
+    color: seashell;
+    font-family: 'New Tegomin', serif;
+    background-image: url(../img/cortes_y_mas/mennu2.jpg);
+    justify-content: center;
+    align-items: center;
+}
+
+footer .footer-pie img {
+    padding: 5px;
+    width: 55px;
+    height: 50px;
+}
+
+.redes a {
+    text-decoration: none;
+}

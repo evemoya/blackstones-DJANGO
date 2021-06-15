@@ -1,0 +1,113 @@
+
+
+
+#quienes_somos{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin:auto;
+    border-top: solid 50px rgb(34, 33, 33);
+    background: #333;
+    
+    
+}
+
+#bienvenida p{
+    color: white;
+    font-size: 20px;
+}
+
+#sucursal{
+    font-family: 'New Tegomin', serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0px;
+    text-decoration: none;
+    border-top: solid 50px rgb(34, 33, 33);
+    
+}
+
+
+
+#sucursal .contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 15px;
+    
+
+}
+
+#sucursal .contenedor img{
+    width: 250px;
+    height: 250px;
+    border: solid 5px rgb(202, 103, 103);
+    border-radius: 15px;
+}
+#sucursal article{
+    margin: 15px;
+    
+}
+
+
+
+@media (max-width: 562px){
+    #quienes_somos img {
+        width: 100%;
+    }
+}
+
+
+/*RESPONSIVE DESIGN : ADAPTABLE A DISP MOVIL*/
+/*
+@media screen and (max-width: 1220px){
+    
+    .banner,
+    .bienvenida,
+    .sucursal,
+    .quienes_somos
+    .footer-pie
+    {
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+
+
+}
+
+@media screen and (max-width: 1020px){
+
+    
+    .banner,
+    .bienvenida,
+    .sucursal,
+    .quienes_somos,
+    .footer-pie{
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        
+    }
+
+}
+@media screen and (max-width: 800px){
+    
+    .banner,
+    .bienvenida,
+    .sucursal,
+    .quienes_somos,
+    .footer-pie{
+        width: 100%;
+        
+        display: flex;
+        justify-content: center;
+        display: inline-block;
+        
+    }
+    
+
+    
+}
+*/

@@ -1,0 +1,153 @@
+
+.parrallax{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/cortes_y_mas/parralaxx.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.texto-hero{
+    background: rgb(24, 23, 23);
+    padding: 18px;
+    width: 320px;
+    text-align: center;
+    color: white;
+
+}
+h2{
+    font-size: 32px;
+    font-weight: 300;
+    font-family: 'New Tegomin', serif;
+    color: white;
+    font-size: 30px;
+    
+    
+}
+
+.parrallax-2{
+    width: 100%;
+    height: 50vh;
+    background-image: url(../img/cortes_y_mas/parralaxx.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+h3{
+    font-family: 'New Tegomin', serif;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+
+}
+.info-servicio img{
+    width: 550px;
+    height: 350px;
+    float: right;
+    /*margin-left: 70%;
+    display: flex;*/
+    
+    
+    
+   
+
+}
+.info-servicio2 h3{
+    padding: 50px;
+    justify-content: center;
+}
+
+@media (max-width: 551px){
+    .info-servicio img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+}
+
+
+/*RESPONSIVE DESIGN : ADAPTABLE A DISP MOVIL*/
+/*
+@media screen and (max-width: 1220px){
+    
+    
+    .contenedor-logo-principal,
+    .parrallax
+    .info-servicio,
+    .parrallax-2,
+    .info-servicio2
+    .footer-pie
+    {
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+
+
+}
+
+@media screen and (max-width: 1020px){
+
+    
+    
+    .contenedor-logo-principal,
+    .parrallax
+    .info-servicio,
+    .parrallax-2,
+    .info-servicio2,
+    .footer-pie{
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        
+    }
+
+}
+@media screen and (max-width: 800px){
+    
+    
+    .contenedor-logo-principal,
+    .parrallax
+    .info-servicio,
+    .parrallax-2,
+    .info-servicio2,
+    .footer-pie{
+        width: 100%;
+        
+        display: flex;
+        justify-content: center;
+        display: inline-block;
+        
+    }
+    .info-servicio,
+    .img{
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 0;
+        justify-content: center;
+        
+        
+
+
+    }
+
+    
+}
+*/

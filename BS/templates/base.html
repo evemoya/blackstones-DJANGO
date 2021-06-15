@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>black stones</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logos/black stones.png' %}">
+
+    <!-- CSS BASE  -->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/lightbox.css' %}">
+    
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:500,600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <!-- Bloque para CSS  requerido -->
+    {% block css %}
+    {% endblock css %}
+
+
+
+
+</head>
+
+<body>
+        <header>
+
+            <input type="checkbox" name="" id="menu-bar">
+            <label class="icon-align-justify" for="menu-bar"></label>
+            <nav class="menu">
+                <a href="{% url 'IND' %} ">Home</a>
+                <a href="">Quienes somos</a>
+                <a href="">Servicios</a> 
+                <a href="{% url 'GALE' %} ">Galeria</a>
+                <a href="{% url 'AGENDARHORA' %} ">Agenda tu hora</a>
+                <a href="">Tienda</a>
+                <a href="">Inicia sesion</a>
+                <a href="">Registrate</a>
+                <a href="">Contactanos</a>
+
+                <input class="buscador" type="text" placeholder="  ¿Que buscas?">
+
+
+            </nav>
+            <nav id="contenedor-logo-principal">
+                <img src="{% static 'img/logos/black stones.png' %}" alt="">
+                <h1>Black Stones Barber</h1>
+            </nav>
+
+        </header>
+
+    <main>
+        <div class="banner">
+            <div class="contenedor">
+                <h2>Black Stones Barber</h2>
+                <p>Buscas tu corte ideal, atrevete con nosotras!</p>
+                <a href="{% url 'INFO' %}">Informaciones</a>
+            </div>
+
+        </div>
+
+
+    {% block contenido %}
+
+    {% endblock contenido %}
+
+  </main>
+
+    <footer>
+        <section class="footer-pie">
+            <div class="contenedor">
+                <p>®Black stones barber 2021- Sitio web</p>
+            </div>
+            <div class="redes">
+                <a href="https://www.facebook.com/labarberaperu">
+                    <img src="{% static 'img/footer/face.png' %} " alt="">
+
+                </a>
+                <a href="https://www.instagram.com/lefemmebarber/">
+                    <img src="{% static 'img/footer/instagram.png' %} " alt="">
+
+                </a>
+            </div>
+        </section>
+
+    </footer>
+
+
+   <!-- Bloque para JS requerido  -->
+    {% block js %}
+    {% endblock js %}
+
+
+    <!-- JS BASE -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    </body>
+</html>

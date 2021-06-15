@@ -1,0 +1,36 @@
+/*RESPONSIVE DESIGN : ADAPTABLE A DISP MOVIL*/
+/*
+@media screen and (max-width: 1220px){
+    
+    .banner,
+    .bienvenida,
+    .contenedor
+    .image,
+    .footer-pie
+    {
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+
+
+}
+
+
+@media screen and (max-width: 800px){
+    
+    .banner,
+    .bienvenida,
+    .contenedor
+    .image,
+    .footer-pie{
+        width: 100%;      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: inline-block;
+        
+    }
+    
+    
+}
+*/

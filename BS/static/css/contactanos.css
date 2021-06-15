@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(/img/blanco.jpg);
+    background-size: 100vw 100vh ;
+    background-attachment: fixed;
+    margin: 0;
+    
+}
+.form-re {
+    width: 80% ;
+    background-color: black;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-family: 'calibri';
+    color:white;
+    box-shadow: 7px 13px 37px #000;
+    box-sizing: border-box;
+    
+
+}
+
+.form-re .botons {
+    width: 100%;
+    background: darkred;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    border-radius: 5px;
+
+}
+
+.botons:hover{
+    cursor: pointer;
+    background: coral;
+}
+
+.nombre{
+    margin: auto;
+    width: 50%;
+    padding: 12px;
+    margin: 16px 0px;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.apellido{
+    margin: auto;
+    width: 49%;
+    padding: 12px;
+    margin: 16px 0px;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.text-area{
+    margin: auto;
+    width: 100%;
+    border-radius: 5px;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: gray;
+
+}
+
+@media (max-width:400px){
+    .form-re{
+        width: 100%;
+    }
+}
+
+
+
