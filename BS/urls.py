@@ -11,7 +11,7 @@ urlpatterns = [
     path ('gale/', galeria, name='GALE' ),
     path ('agenda/',agendarhora, name='AGENDARHORA'),
     path ('info/',informaciones, name='INFO'),
-    path ('info/',tienda, name='TIENDA'),
+    path ('tienda/',tienda, name='TIENDA'),
 
     
     
