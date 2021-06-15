@@ -17,6 +17,10 @@ def agendarhora(request):
 def informaciones(request):
     return render(request, "informaciones.html")
 
+def tienda(request):
+    return render(request, "tienda.html")
+
+
 
 
     ################################
