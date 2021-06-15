@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="" method="POST">
+        <h2 class="form-titutlo"> Ingreso Producto</h2>
+        <div class="contenedor-input">
+            <input class="control" type="text" name="txtNombre" id="txtNombre" placeholder=" ingrese nombre producto" minlength="3" maxlength="100" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 100 letras">
+            <textarea name="txtDesc" id="" cols="30" rows="10"></textarea>
+            <input type="number" name="txtPrecio" id="txtPrecio" placeholder="Ingrese Presio" required>
+            <input type="file" name="txtImg" id="txtImg">
+
+            <select name="cboCategoria" id="cboCategoria" required>
+                {% for item in categorias%}
+                    <option >{{item.nombre}}</option>
+                {% endfor %}
+                
+            </select>
+
+
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+        </div>
+
+
+    </form>
+
+</section>
+
+
+{% endblock contenido %}
+
+
+</body>
+
+</html>

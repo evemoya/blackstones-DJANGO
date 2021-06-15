@@ -1,4 +1,7 @@
+
 from django.shortcuts import render
+from .models import Categoria
+
 
 # Create your views here.
 
@@ -19,6 +22,13 @@ def informaciones(request):
 
 def tienda(request):
     return render(request, "tienda.html")
+    
+
+def admreg(request):
+    categorias = Categoria.objects.all()
+    contexto = {"categorias" : categorias}
+    return render(request, "adm_registro.html", contexto)
+
 
 
 
