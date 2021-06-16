@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from .models import Categoria
+from .models import Categoria, Producto
 
 
 # Create your views here.
@@ -27,6 +27,25 @@ def tienda(request):
 def admreg(request):
     categorias = Categoria.objects.all()
     contexto = {"categorias" : categorias}
+
+    if request.POST:
+        nombre = request.POST.get("txtNombre")
+        precio = request.POST.get("txtPrecio")
+        desc = request.POST.get("txtDesc")
+        foto = request.FILES.get("txtImg")
+        cate = "productos"
+        obj_categoria = Categoria.objects.get(nombre=cate)
+
+        prod = Producto(
+            nombre=nombre,
+            precio=precio,
+            descripcion=desc,
+            foto = foto,
+            categoria = obj_categoria
+            )
+        prod.save()
+        contexto = {"categorias" : categorias, "mensaje":"producto grabado"} 
+
     return render(request, "adm_registro.html", contexto)
 
 

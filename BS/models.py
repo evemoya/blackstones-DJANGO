@@ -13,7 +13,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     precio = models.IntegerField()
-    foto = models.ImageField(upload_to='productos', null=True)
+    foto = models.ImageField(upload_to='media/productos', null=True)
     publicado = models.BooleanField(default=False)
     portada = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
@@ -28,6 +28,7 @@ class Sucursal(models.Model):
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=100)
     publicado = models.BooleanField(default=False)
+    foto = models.ImageField(upload_to='media/sucursal', null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def __str__(self):
