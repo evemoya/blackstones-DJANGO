@@ -26,9 +26,12 @@ class Sucursal(models.Model):
     nombre = models.CharField(max_length=50)
     comuna = models.CharField(max_length=50)
     telefono = models.IntegerField()
+    correo = models.CharField(max_length=50, null=True)
+    horarios  = models.CharField(max_length=50, null=True)
     direccion = models.CharField(max_length=100)
     publicado = models.BooleanField(default=False)
     foto = models.ImageField(upload_to='media/sucursal', null=True)
+    mapa = models.CharField(max_length=500, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -37,8 +40,9 @@ class Sucursal(models.Model):
 class Peluquero(models.Model):
     id_auto_inc = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
+    apodo = models.CharField(max_length=50, null= True)
     descripcion = models.TextField()
-    foto = models.ImageField(upload_to='peluqueros', null=True)
+    foto = models.ImageField(upload_to='media/peluqueros', null=True)
     publicado = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     Sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
