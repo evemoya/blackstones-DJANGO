@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block contenido %}
+{% extends "base.html" %} 
+{% load static %} 
+{% block contenido %}
 
 <section class="form-re">
     <form class="form-registro" action="{% url 'ADMREG' %}" method="post" enctype="multipart/form-data">
@@ -44,7 +46,7 @@
 </section>
 
 
-<!--
+
 <section class="form-re">
     <form class="form-registro" action="{% url 'ADMREG' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -83,7 +85,7 @@
     </form>
 
 </section>
--->
+
 
 
 {% endblock contenido %}

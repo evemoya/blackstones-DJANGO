@@ -1,0 +1,64 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'REGSUCU' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> Ingreso Sucursal</h2>
+
+        <div class="contenedor-input">
+            <p>Nombre Sucursal :
+                <input class="control" type="text" name="txtNombre" id="txtNombre" 
+                placeholder=" ingrese nombre producto" minlength="3" maxlength="50" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+
+            <p> Ingrese Comuna
+                <input class="control" type="text" name="txtComuna" id="txtComuna" 
+                placeholder=" ingrese nombre Comuna" minlength="3" maxlength="50" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <p>Ingrese direccion
+                <input class="control" type="text" name="txtDireccion" id="txtDireccion" 
+                placeholder=" ingrese Direccion" minlength="3" maxlength="100"  tittle="caracteres entre 3 y 100 letras">
+            </p>
+
+
+            <p>telefono
+                <input type="number" name="txtTelefono" id="txtTelefono" placeholder="Ingrese Telefono" required>
+            </p>
+
+            <p> Ingrese Correo
+                <input class="control" type="email" name="txtCorreo" id="txtCorreo" 
+                placeholder=" ingrese Correo" minlength="3" maxlength="50" tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <p> Ingrese Horario
+                <textarea name="txtHorario" id="" cols="20" rows="1"></textarea>
+            </p>
+
+            <p>foto Sucursal
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+            </br></br></br>
+            
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+
+
+{% endblock contenido %}
+
+
+</body>
+
+</html>

@@ -3,17 +3,19 @@
 @import url(bienvenida.css);
 @import url(blog.css);
 @import url(info.css);
-@import url(contacto.css);
 @import url(quienes_somos.css);
 @import url(servicios.css);
 @import url(informaciones.css);
 @import url(banner_sucursal.css);
 @import url(barbers.css);
+@import url(tienda.css);
+
+/**/
+
+@import url(contactanos.css);
 @import url(agendarhora.css);
 @import url(iniciosesion.css);
 @import url(registrate.css);
-@import url(contactanos.css);
-@import url(tienda.css);
 * {
     margin: 0%;
     padding: 0%;

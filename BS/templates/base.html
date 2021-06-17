@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +37,7 @@
             <label class="icon-align-justify" for="menu-bar"></label>
             <nav class="menu">
                 <a href="{% url 'IND' %} ">Home</a>
-                <a href="">Quienes somos</a>
+                <a href="{% url 'QUIENESSOMOS' %}">Quienes somos</a>
                 <a href="">Servicios</a> 
                 <a href="{% url 'GALE' %} ">Galeria</a>
                 <a href="{% url 'AGENDARHORA' %} ">Agenda tu hora</a>
@@ -46,7 +45,7 @@
                 <a href="">Inicia sesion</a>
                 <a href="">Registrate</a>
                 <a href="">Contactanos</a>
-                <a href="{% url 'ADMREG' %} ">ADMIN REGISTROS</a>
+                
 
                 <input class="buscador" type="text" placeholder="  ¿Que buscas?">
 
@@ -91,6 +90,10 @@
 
                 </a>
             </div>
+
+            <a href="{% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
+            <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
+            <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
         </section>
 
     </footer>

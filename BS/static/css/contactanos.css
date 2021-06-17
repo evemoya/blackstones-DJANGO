@@ -1,28 +1,26 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-image: url(/img/blanco.jpg);
-    background-size: 100vw 100vh ;
+    background-size: 100vw 100vh;
     background-attachment: fixed;
     margin: 0;
-    
 }
+
 .form-re {
-    width: 80% ;
+    width: 80%;
     background-color: black;
     padding: 30px;
     margin-top: 30px;
     border-radius: 5px;
     font-family: 'calibri';
-    color:white;
+    color: white;
     box-shadow: 7px 13px 37px #000;
     box-sizing: border-box;
-    
-
 }
 
 .form-re .botons {
@@ -34,15 +32,47 @@ body{
     margin: 16px 0;
     font-size: 16px;
     border-radius: 5px;
-
 }
 
-.botons:hover{
+.form-re h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.form-re h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.form-re a {
+    color: white;
+    text-decoration: none;
+}
+
+.form-re a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.controls {
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: gray;
+}
+
+.botons:hover {
     cursor: pointer;
     background: coral;
 }
 
-.nombre{
+.nombre {
     margin: auto;
     width: 50%;
     padding: 12px;
@@ -51,7 +81,7 @@ body{
     padding: 12px;
 }
 
-.apellido{
+.apellido {
     margin: auto;
     width: 49%;
     padding: 12px;
@@ -60,21 +90,32 @@ body{
     padding: 12px;
 }
 
-.text-area{
+.text-area {
     margin: auto;
     width: 100%;
     border-radius: 5px;
     font-family: 'calibri';
     font-size: 18px;
     color: gray;
-
 }
 
-@media (max-width:400px){
-    .form-re{
+.form-re p {
+    height: 40px;
+    text-align: center;
+    font-size: 18px solid;
+    line-height: 40px;
+}
+
+.op {
+    border-radius: 5px;
+    color: gray;
+    background: white;
+    height: 50px;
+    width: 100%;
+}
+
+@media (max-width:400px) {
+    .form-re {
         width: 100%;
     }
 }
-
-
-
