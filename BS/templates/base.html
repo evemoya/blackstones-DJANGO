@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +12,9 @@
     <!-- CSS BASE  -->
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
-    <link rel="stylesheet" href="{% static 'dist/css/lightbox.css' %}">
-    
+    {% block css %}
+    {% endblock css %}
+  
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,9 +23,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
-    <!-- Bloque para CSS  requerido -->
-    {% block css %}
-    {% endblock css %}
+    <!-- Bloque para CSS  requeridoo-->
 
 
 
@@ -39,14 +37,15 @@
             <label class="icon-align-justify" for="menu-bar"></label>
             <nav class="menu">
                 <a href="{% url 'IND' %} ">Home</a>
-                <a href="">Quienes somos</a>
+                <a href="{% url 'QUIENESSOMOS' %}">Quienes somos</a>
                 <a href="">Servicios</a> 
                 <a href="{% url 'GALE' %} ">Galeria</a>
                 <a href="{% url 'AGENDARHORA' %} ">Agenda tu hora</a>
-                <a href="">Tienda</a>
+                <a href="{% url 'TIENDA' %} ">Tienda</a>
                 <a href="">Inicia sesion</a>
                 <a href="">Registrate</a>
                 <a href="">Contactanos</a>
+                
 
                 <input class="buscador" type="text" placeholder="  ¿Que buscas?">
 
@@ -91,6 +90,10 @@
 
                 </a>
             </div>
+
+            <a href="{% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
+            <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
+            <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
         </section>
 
     </footer>

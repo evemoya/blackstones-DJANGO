@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'REGPROD' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> Ingreso Producto</h2>
+
+        <div class="contenedor-input">
+            <p>Nombre producto :
+                <input class="control" type="text" name="txtNombre" id="txtNombre" placeholder=" ingrese nombre producto" minlength="3" maxlength="100" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 100 letras">
+            </p>
+
+
+            <p>Precio Producto
+                <input type="number" name="txtPrecio" id="txtPrecio" placeholder="Ingrese Presio" required>
+            </p>
+            </br>
+            <p>foto producto
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+
+            </br></br>
+            <p>Descripcion producto <br>
+                <textarea name="txtDesc" id="" cols="30" rows="10"></textarea>
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+{% endblock contenido %}
+
+
+</body>
+
+</html>

@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% load static %} {% block contenido %}
+{% extends "base.html" %} 
+{% load static %} 
+{% block contenido %}
+
 
 
 <section id="bienvenida">
@@ -13,14 +16,6 @@
     <p>Asesoría, corte y lavado de cabello. Incluye peinado con pomada a elección.</p>
     <p>Asesoría, arreglo de barba, crema de afeitar, navaja más after shave y aceite.</p>
     <p>Aplicación de toalla caliente y limpieza facial.</p>
-
-
-    <!-- Esto esta de mas solo test  -->
-    <select name="cbotipos" id="cbotipos">
-            {% for x in tipos %}
-                <option> {{x}} </option>
-            {% endfor %}
-           </select>
 
 
 
@@ -59,9 +54,20 @@
 
 <section id="Ultimos_prod">
     <h3>Ultimos productos </h3>
-    <p>producto 1</p>
-    <p>producto 2</p>
-    <p>producto 3</p>
+
+        <div class="contenido-tienda">
+            {% for reg in productos %}
+
+            <a href={{reg.nombre}}>
+                <img class="prod" src="{{reg.foto.url}}" alt="">
+                <h3>{{reg.nombre}}</h3>
+            
+            
+            </a>
+
+            {% endfor %}
+        </div>
+
 </section>
 
 

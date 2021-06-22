@@ -1,0 +1,96 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'ADMREG' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> Ingreso Producto</h2>
+
+        <div class="contenedor-input">
+            <p>Nombre producto :
+                <input class="control" type="text" name="txtNombre" id="txtNombre" placeholder=" ingrese nombre producto" minlength="3" maxlength="100" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 100 letras">
+            </p>
+
+
+            <p>Precio Producto
+                <input type="number" name="txtPrecio" id="txtPrecio" placeholder="Ingrese Presio" required>
+            </p>
+            <p>foto producto
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+
+
+            <p>Descripcion producto <br>
+                <textarea name="txtDesc" id="" cols="30" rows="10"></textarea>
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'ADMREG' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> SURCURSAL</h2>
+
+        <div class="contenedor-input">
+            <p>Nombre
+                <input class="control" type="text" name="txtNombre" id="txtNombre" placeholder=" ingrese nombre Sucursal" minlength="3" maxlength="50" required pattern="[A-Za-z ]{3,50}" tittle="caracterres entre 3 y 50 letras">
+            </p>
+            <p>Direccion
+                <input class="control" type="text" name="txtDireccion" id="txtDireccion" placeholder=" ingrese Direccion" minlength="3" maxlength="100" required pattern="[A-Za-z ]{3,100}" tittle="caracterres entre 3 y 100 letras">
+            </p>
+            <p>Comuna
+                <input class="control" type="text" name="txtComuna" id="txtComuna" placeholder=" COMUNA" minlength="3" maxlength="50" required pattern="[A-Za-z ]{3,50}" tittle="caracterres entre 3 y 50 letras">
+            </p>
+            <p>telefono
+                <input type="number" name="txtTelefono" id="txtTelefono" placeholder="Ingrese Telefono" required>
+            </p>
+            <p>imagen
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+
+            <p>categoria
+                <select name="cboCategoria" id="cboCategoria" required>
+                {% for item in categorias%}
+                    <option >{{item.nombre}}</option>
+                {% endfor %}
+                
+            </select>
+            </p>
+
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+
+{% endblock contenido %}
+
+
+</body>
+
+</html>

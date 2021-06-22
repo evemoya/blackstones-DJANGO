@@ -1,49 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>black stones</title>
-    <link rel="icon" type="image/png" href="img/logos/black stones.png">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="dist/css/lightbox.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
-</head>
-
-<body>
-    <header>
-        <input type="checkbox" name="" id="menu-bar">
-        <label class="icon-align-justify" for="menu-bar"></label>
-        <nav class="menu">
-            <a href="index.html">Home</a>
-            <a href="Quienes_somos.html">Quienes somos</a>
-            <a href="Servicios.html">Servicios</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="agendarhora.html">Agenda tu hora</a>
-            <a href="tienda.html">Tienda</a>
-            <a href="iniciosesion.html">Inicia sesion</a>
-            <a href="registrate.html">Registrate</a>
-            <a href="contactanos.html">Contactanos</a>
-
-
-        </nav>
-
-        <nav id="contenedor-logo-principal">
-            <img src="img/logos/black stones.png" alt="">
-            <h1>Black Stones Barber</h1>
-
-        </nav>
+{% extends "base.html" %}
+{%load static%}
 
 
 
-
-    </header>
-
+{% block contenido %}
     <main>
         <section id="banner_sucu1">
             <div class="contenedor_sucu1">
@@ -89,45 +49,23 @@
 
                 <div class="info-equipo">
                     <a href="barbers_natu.html">
-                        <img src="img/Mauro/barber1.jpg" alt="Natu">
+                        <img src="{% static 'img/Mauro/barber1.jpg' %}" alt="Natu">
                     </a>
                     <a href="barbers_fefa.html">
-                        <img src="img/Mauro/barber2.jpg" alt="Fefa">
+                        <img src="{% static 'img/Mauro/barber2.jpg' %}" alt="Fefa">
                     </a>
                     <a href="barbers_aly.html">
-                        <img src="img/Mauro/barber3.jpg" alt="Aly">
+                        <img src="{% static 'img/Mauro/barber3.jpg' %}" alt="Aly">
                     </a>
                     <a href="barbers_mily.html">
-                        <img src="img/Mauro/barber4.jpg" alt="Mily">
+                        <img src="{% static 'img/Mauro/barber4.jpg' %}" alt="Mily">
                     </a>
                 </div>
             </section>
         </section>
-    </main>
-
-    <footer>
-        <section class="footer-pie">
-            <div class="contenedor">
-                <p>®Black stones barber 2021- Sitio web</p>
-
-            </div>
-            <div class="redes">
-                <a href="https://www.facebook.com/labarberaperu">
-                    <img src="img/footer/face.png" alt="">
-
-                </a>
-                <a href="https://www.instagram.com/lefemmebarber/">
-                    <img src="img/footer/instagram.png" alt="">
-
-                </a>
+{% endblock contenido %}
 
 
-            </div>
-
-        </section>
-
-
-    </footer>
 </body>
 
 </html>
