@@ -1,18 +1,21 @@
-{% extends "base.html" %} 
-{% load static %} 
-
-{% block contenido %}
+{% extends "base.html" %} {% load static %} {% block contenido %}
 
 <div class="contenido-tienda">
-    {% for reg in productos %}
+   
+    {% for prod in productos %}
+    <article>
+        <a href="{% url 'FICHA' prod.nombre %}">
+            <img class="prod" src="{{prod.foto.url}}" alt="">
+        
+        <h4>{{prod.nombre}}</h4>
+        
+        <h4>precio: ${{prod.precio}}</h4>
+            <h4>ver ficha</h4>
+            
+        </a>
+        
 
-    <a href={{reg.nombre}}>
-        <img class="prod" src="{{reg.foto.url}}" alt="">
-        <h3>{{reg.nombre}}</h3>
-        <input class="botons" type="" value="Ver mas">
-        <input class="botons" type="" value="Agregar">
-        <h3>{{reg.descripcion}}</h3>
-    </a>
+    </article>
 
     {% endfor %}
 </div>

@@ -1,61 +1,39 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} 
+{% load static %} 
 
 
 {% block contenido %}
-        </div> 
-        <section id="bienvenida">
-            <h2>Quienes somos</h2>
-            <p>Nuestro sueño empieza cuando muchas de nuestras barberas estudiaron 
-                el arte de la barbería, trabajando horas de sol a sol, 
-                es por esto que nace este proyecto en el cual nosotras nos comprometemos con nuestros clientes, no queremos limites en tiempos
-                solo queremos ofrecer un servicio de calidad y que te sientas en familia. ven con nosotras y vive esta experiencia!!
-            </p>
-        </section>
-        <section id="sucursal">
 
-            <h3>Sucursales:</h3>
-            <div class="contenedor">
-                <article>
-                    <h4>Maipú</h4> 
-                    <a href="{% url 'SUCURSAL' %}">
-                        <img src="{% static 'img/cortes_y_mas/barber.jpg' %}" alt="">
-                        
-                    </a>
-                </article>
-                <article>
-                    <h4>Ñuñoa</h4>
-                    <a href="{% url 'SUCURSAL' %}">
-                        <img src="{% static 'img/cortes_y_mas/sucursal2.jpg' %}" alt="">
-                        
-                    </a>
-                  
-                </article>
-                <article>
-                    <h4>Puente alto</h4>
-                    <a href="{% url 'SUCURSAL' %}">
-                        <img src="{% static 'img/cortes_y_mas/sucursal3.jpg' %}" alt="">
-                        
-                    </a>
-                </article>
-                <article>
-                    <h4>Santiago</h4>
-                    <a href="{% url 'SUCURSAL' %}">
-                        <img src="{% static 'img/cortes_y_mas/sucursal4.png' %}" alt="">
-                        
-                    </a>
-            </div>
-        </section>
- <!--       <section id="quienes_somos">
-            <img src="{% static 'img/cortes_y_mas/barber vintage.jpg' %}" alt="">
 
-        </section>
- -->       
+</div>
+<section id="bienvenida">
+    <h2>Quienes somos</h2>
+    <p>Nuestro sueño empieza cuando muchas de nuestras barberas estudiaron el arte de la barbería, trabajando horas de sol a sol, es por esto que nace este proyecto en el cual nosotras nos comprometemos con nuestros clientes, no queremos limites en tiempos
+        solo queremos ofrecer un servicio de calidad y que te sientas en familia. ven con nosotras y vive esta experiencia!!
+    </p>
+</section>
+<section id="sucursal">
+
+    <h3>Nuestras sucursales:</h3>
+        
+        <div class="contenedor">
+        {% for suc in sucursales %}
+        <article>
+                <h3>{{suc.nombre}}</h3>
+                <img class="sucu" src="{{suc.foto.url}}" alt="">
+                <br>
+                <a href="{% url 'SUCURSAL' suc.nombre %}"> ver sucursal</a>
+            
+        
+
+            
+        </article>
+
+        {% endfor %}
+    </div>
+</section>
+
 
 
 {% endblock contenido %}
 
-
-
-</body>
-</html>

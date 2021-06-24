@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+<section class="form-re">
+    <article>
+        <h4>Inicia sesión</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <input class="controls" type="text" name="txtUsuario" id="" placeholder="Ingrese su usuario" required>
+                <input minlength="4" maxlength="32" class="controls" type="password" name="txtPass" id="" placeholder="Ingrese su password" required>
+
+
+                <input class="botons" type="submit" value="Iniciar sesión">
+
+                <p>Estoy de acuerdo con <a href="">Terminos y condiciones</a> </p>
+                <p> ¿No tienes cuenta? <a href=""> Registrate </a></p>
+            </div>
+        </form>
+
+    </article>
+    <div style="text-align: center;color: red; font-size: xx-large ;">
+        {{mensaje}}
+    </div>
+</section>
+
+
+{% endblock contenido %}

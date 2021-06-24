@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+
+<div style="text-align: center; text-decoration: none;">
+
+    <a href=" {% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
+    <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
+    <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
+</div>
+
+
+<div class="contenido-tienda ">
+
+    {% for prod in productos %}
+    <article>
+        <a href=" ">
+            <img class="prod " src="{{prod.foto.url}} " alt=" ">
+
+            <h4>{{prod.nombre}}</h4>
+
+
+        </a>
+
+
+    </article>
+
+    {% endfor %}
+</div>
+<div class="contenido-tienda ">
+
+    {% for peluqueros in peluqueros %}
+    <article>
+        <a href=" ">
+            <img class="prod " src="{{peluqueros.foto.url}} " alt=" ">
+
+            <h4>{{peluqueros.nombre}}</h4>
+
+
+        </a>
+
+
+    </article>
+
+    {% endfor %}
+</div>
+
+</div>
+<div class="contenido-tienda ">
+
+    {% for sucursales in sucursales %}
+    <article>
+        <a href=" ">
+            <img class="prod " src="{{sucursales.foto.url}} " alt=" ">
+
+            <h4>{{sucursales.nombre}}</h4>
+
+
+        </a>
+
+
+    </article>
+
+    {% endfor %}
+</div>
+
+
+
+{% endblock contenido %}

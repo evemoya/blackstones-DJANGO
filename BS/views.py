@@ -1,15 +1,48 @@
 
 from django.db.models.fields.related import ForeignObject
+from django.http import request
 from django.shortcuts import render
 from .models import Categoria, Peluquero, Producto, Sucursal
 
+#IMPORTAR EL MODELO DE TABLA  :  LOGIN
+from django.contrib.auth.models import User
+
+#IMPORTAR LIBRERIA PARA AUTENTICAR :  LOGIN 
+from django.contrib.auth import authenticate, logout, login as login_aut
+
+#IMPORTAR LIBRERIA DECORADORA EVITA INGRESO A PAGINAS SIN AUTORIZACION
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+def login(request):
+    mensaje= ""
+    if request.POST:
+        nombre = request.POST.get("txtUsuario")
+        contra = request.POST.get("txtPass")
+        us = authenticate(request,username=nombre, password=contra)
+        if us is not None and us.is_active:
+            login_aut(request,us)
+            productos = Producto.objects.filter(portada=True)
+            mensaje = "usuario logueado"
+            contexto = {"productos":productos,"mensaje":mensaje }
+            return render(request, "index.html", contexto)
+        else:
+            mensaje = "usuario o contrasena incorrecto"
+    contexto = {"mensaje":mensaje}
+    return render(request, "login.html", contexto)
+
+
+def cerrar_sesion(request):
+    logout(request)
+    productos = Producto.objects.filter(portada=True)
+    contexto = {"productos":productos}
+    return render(request, "index.html", contexto)
+
+
 def index(request):
-    tipos =  ["asesoria Corte pelo", "Asesoria corte Barba", "Asesoria tratamientos faciales" ]
-    productos = Producto.objects.all()
-    contexto = {"nombre" : "NOMBRE APELLIDO", "tipos":tipos, "productos":productos}
+    productos = Producto.objects.filter(portada=True)
+    contexto = {"productos":productos}
     return render(request, "index.html", contexto)
 
 def galeria(request):
@@ -23,22 +56,45 @@ def informaciones(request):
     return render(request, "informaciones.html")
 
 def tienda(request):
-    productos = Producto.objects.all()
+    productos = Producto.objects.filter(publicado=True)
     contexto = {"productos" : productos}
     return render(request, "tienda.html", contexto)
 
 
+def ficha(request, id):
+    productos = Producto.objects.get(nombre=id)
+    contexto = {"productos":productos}
+    return render(request, "ficha.html", contexto)
+
+def barberos(request, id):
+    peluquero = Peluquero.objects.get(nombre=id)
+    sucursal = Sucursal.objects.all
+    contexto =  {"peluquero" : peluquero, "sucursal" : sucursal}
+    return render(request, "barberos.html", contexto)
+
 def Quienes_somos(request):
-    return render(request, "Quienes_somos.html")
+    sucursales = Sucursal.objects.all()
+    contexto = {"sucursales": sucursales}
+    return render(request, "Quienes_somos.html", contexto)
 
-def sucursal(request):
-    return render(request, "sucursal.html")
+def sucursal(request, id):
+    sucursal = Sucursal.objects.get(nombre=id)
+    peluqueros = Peluquero.objects.filter(Sucursal=sucursal)
+    contexto = {"sucursal": sucursal, "peluqueros": peluqueros}
+    return render(request, "sucursal.html", contexto)
 
-def sucursal_maipu(request):
-    return render(request,"sucursal_maipu.html")
 
-def barberos(request):
-    return render(request, "barberos.html")
+def administracion(request):
+    sucursales = Sucursal.objects.all()
+    peluqueros = Peluquero.objects.all()
+    productos = Producto.objects.all()
+    contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos}
+    return render(request, "administracion.html", contexto)
+
+
+
+
+
 
 
 

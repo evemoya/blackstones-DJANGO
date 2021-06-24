@@ -1,15 +1,11 @@
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block contenido %}
 
-
-{% block contenido %}
-  <main>
         <section id="banner_sucu1">
             <div class="contenedor_sucu1">
                 <h2>Sucursal</h2>
-                <!--
-                <img src="img/Mauro/Simple-Presentation.jpg" alt="asd">
-                -->
+                
+                <img src="{{sucursal.foto.url}}" alt="">
+                
             </div>
         </section>
 
@@ -22,19 +18,17 @@
             <div class="contenedor-info">
                 <iframe
                 
-                    src=""
+                    src="{{sucursal.mapa}}"
                     width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
 <!-- Imagen de mapa direccion maipu:
 https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.3529291799064!2d-70.74543228471461!3d-33.492193707042176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3117e874a33%3A0x844b29046dd0fdb4!2sBarber%C3%ADa%20Skull%20%26%20Roses!5e0!3m2!1ses!2scl!4v1618631943621!5m2!1ses!2scl -->
                 <div class="direccion">
                     <h2>Black Stones Barber</h2>
-                    <p>
-                        Dirección: <br><br>
-                        Horario: 09:00 AM a 18:30 PM<br><br>
-                        Fonos reservas:<br><br>
-                        Correo: <br><br>
-                    </p>
+                    <p>Dirección: {{sucursal.direccion}} </p>
+                    <p>Horario:  {{sucursal.horarios}} </p>
+                    <p>Telefono:  {{sucursal.telefono}} </p>
+                    <p>Correo:  {{sucursal.correo}} </p>
                 </div>
             </div>
 
@@ -44,29 +38,16 @@ https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.3529291799064!2d-70.7
                 <div class="titulo-equipo">
                     <h2>Team Black Stones: </h2>
                 </div>
-
                 <div class="info-equipo">
-                    <a href="">
-                        <img src="{% static '' %}" alt="">
-                        <!--barbers_natu.html img/Mauro/barber1.jpg foto natu -->
+            {% for peluquero in peluqueros %}
+               
+                    <a href="{% url 'BARBEROS' peluquero.nombre %}">
+                        <img src="{{peluquero.foto.url}}" alt="">
                     </a>
-                    <a href="">
-                        <img src="{% static '' %}" alt="">
-                        <!--barbers_fefa.html img/Mauro/barber2.jpg fefa-->
-                    </a>
-                    <a href="">
-                        <img src="{% static '' %}" alt="">
-                        <!--barbers_aly.html img/Mauro/barber3.jpg  Aly-->
-                    </a>
-                    <a href="">
-                        <img src="{% static '' %}" alt="">
-                        <!-- barbers_mily.html img/Mauro/barber4.jpg Mily-->
-                    </a>
+                
+            {% endfor %}
                 </div>
             </section>
         </section>
 
 {% endblock contenido %}
-
-
-
