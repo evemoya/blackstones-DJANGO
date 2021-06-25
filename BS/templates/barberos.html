@@ -16,14 +16,9 @@
         <section id="destacados">
             <h2>Trabajos Destacado</h2>
             <div class="imagenes">
-                <img src="" alt="1">
-                <!-- img/Mauro/corte_destacado1.png-->
-                <img src="" alt="2">
-                <!--img/Mauro/corte_destacado2.jpg -->
-                <img src="" alt="3">
-                <!--img/Mauro/corte_destacado3.jpg -->
-                <img src="" alt="4">
-                <!--img/Mauro/corte_destacado4.jpeg -->
+                {% for corte  in cortes %}
+                    <img class="corte" src="{{corte.foto.url}}" alt="">
+        {% endfor %}
             </div>
         </section>
     </main>

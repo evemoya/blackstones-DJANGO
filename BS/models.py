@@ -4,6 +4,7 @@ from django.db import models
 
 class Categoria(models.Model):
     nombre = models.CharField(primary_key=True,max_length=40)
+    imagen = models.ImageField(upload_to='media/categoria', null=True)
 
     def __str__(self) -> str:
         return self.nombre
@@ -46,6 +47,15 @@ class Peluquero(models.Model):
     publicado = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     Sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
+
+class Corte(models.Model):
+    id_auto_inc = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
+    foto = models.ImageField(upload_to='media/cortes', null=True)
+    publicado = models.BooleanField(default=False)
+    comentario = models.TextField(null=True)
+    peluquero = models.ForeignKey(Peluquero, on_delete=models.CASCADE, null=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return "Numero:"+str(self.id_auto_inc)

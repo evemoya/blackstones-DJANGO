@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'REGCORTE' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> Ingreso su Corte</h2>
+
+        <div class="contenedor-input">
+
+            <p>Nombre :
+                <input class="control" type="text" name="txtNombre" id="txtNombre" placeholder=" ingrese su Nombre" minlength="3" maxlength="50" required pattern="[A-Za-z ]{3,50}" tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <p>Suba foto de su corte
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+            </br>
+            </br>
+
+            <p>Seleccione Peluquero
+                </br>
+                <select name="cboPeluquero" id="cboPeluquero" required>
+                </br>
+                {% for item in peluqueros%}
+                    <option >{{item.nombre}}</option>
+                {% endfor %}
+                </br>
+                </select>
+
+
+
+                <p>Descripcion <br>
+                    <textarea name="txtDesc" id="" cols="30" rows="10"></textarea>
+                </p>
+
+
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+
+
+
+
+                <input class="botons" type="submit" value="registrar">
+                <input class="botons" type="reset" value="Limpiar">
+
+                <section style="text-align: center;">
+                    <a href="{% url 'QUIENESSOMOS' %}">Si tienes dudas de tu peluquero visita nuestras Sucursales </a>
+                </section>
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+
+{% endblock contenido %}
+
+
+</body>
+
+</html>

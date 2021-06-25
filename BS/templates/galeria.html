@@ -1,79 +1,81 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'dist/css/lightbox.css' %}"> {% endblock css %} {% block contenido %}
 
-    {% block css %}
-       <link rel="stylesheet" href="{% static 'dist/css/lightbox.css' %}"> 
-    {% endblock css %}
+<section id="bienvenida">
+    <h2>Galeria de Nuestras sucursales y servicios de Barberia</h2>
+</section>
+<br>
+<section id="blog">
 
-    {% block contenido %}
+    <section class="filtros">
 
-        <section id="bienvenida">
-            <h2>Galeria de nuestros servicios de Barberia</h2>
+        <section>
+            <form action="{% url 'FILTROCATEGORIA' %}" method="post">
+                {% csrf_token %}
+                <p>Filtro por categorias</p>
+
+                <select name="cboCategoria" id="cboCategoria">
+                    {% for item in categorias %}
+                        <option>{{item.nombre}}</option>>
+                    {% endfor %}
+            </select>
+                <input type="submit" value="Filtrar">
+            </form>
         </section>
-        <br>
-        
-        <section id="blog">
-
-            <h3>2021</h3>
-            <div class="contenedor">
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/bebestible.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/bebestible.jpg' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/ladybarber.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/ladybarber.jpg' %}" alt="">
-                    </a>
-                  
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/barber1.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/barber1.jpg' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/cera1.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/cera1.jpg' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/barber3.jpg' %}" data-lightbox="galeria" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/barber3.jpg' %}" alt="">
-                    </a>
-                    
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/barber4.png' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/barber4.png' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/cera2.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/cera2.jpg' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/barber6.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/barber6.jpg' %}" alt="">
-                    </a>
-                </article>
-                <article>
-                    <a href="{% static 'img/cortes_y_mas/barber7.jpg' %}" data-lightbox="galeria" data-title="">
-                        <img src="{% static 'img/cortes_y_mas/barber7.jpg' %}" alt="">
-                    </a>
-                </article>
-
-            </div>
+        <section>
+            <form action="{% url 'BUSCARTXT' %}" method="post">
+                {% csrf_token %}
+                <p>busqueda por texto</p>
+                <input type="text" name="txtTexto" id="txtTexto">
+                <input type="submit" value="Buscar">
+            </form>
         </section>
 
-    {% endblock contenido %}
-        
-        
+    </section>
 
-    {% block js %}
-      <script src="{% static 'dist/js/lightbox-plus-jquery.js' %}"></script>   
-    {% endblock js %}
+
+    <div class="contenedor">
+
+        {% for reg in peluqueros %}
+        <article>
+            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title="{{reg.descripcion}}">
+                <img src="{{reg.foto.url}}" alt="">
+            </a>
+        </article>
+
+        {% endfor %} {% for reg in sucursales %}
+        <article>
+            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title="{{reg.nombre}} - {{reg.correo}} - {{reg.horarios}} ">
+                <img src="{{reg.foto.url}}" alt="">
+            </a>
+        </article>
+
+        {% endfor %} {% for reg in productos %}
+        <article>
+            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title="{{reg.descripcion}}">
+                <img src="{{reg.foto.url}}" alt="">
+            </a>
+        </article>
+
+        {% endfor %} {% for reg in cortes %}
+        <article>
+            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title=" {{reg.nombre}}- {{reg.comentario}}">
+                <img src="{{reg.foto.url}}" alt="">
+            </a>
+        </article>
+
+        {% endfor %}
+
+    </div>
+    <div style="text-align: center; color: red;">
+        {{cant}}
+    </div>
+</section>
+
+{% endblock contenido %} {% block js %}
+<script src="{% static 'dist/js/lightbox-plus-jquery.js' %}"></script>
+{% endblock js %}
 
 </body>
+
 </html>

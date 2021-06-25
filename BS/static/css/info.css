@@ -1,54 +1,52 @@
-
-
-#info{
-   
+#info {
     color: white;
     text-align: center;
     padding: 20px;
     font-family: 'New Tegomin', serif;
     font-size: 30px;
     background: rgb(17, 16, 16);
-    
-    
 }
-#info .contenedor{
-    
+
+#info .contenedor {
     margin-right: 0%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
-
-.info-barberia img{
-    
+.info-barberia img {
     width: 250px;
-    height: 350px; 
+    height: 350px;
     border: solid 5px rgb(197, 191, 189);
     border-radius: 20%;
-   
-    
-
-    
-    
-    
 }
 
-
-
-
-.info-barberia{
+.info-barberia {
     margin: 20px;
 }
 
-
-#info .contenedor .info-barberia > a > img:hover{
+#info .contenedor .info-barberia>a>img:hover {
     transform: rotate(10deg) scale(1.1);
-    transition: all 0.7s;   
+    transition: all 0.7s;
 }
 
+.index-cate {
+    padding: 25px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+.index-cate img {
+    width: 300px;
+    height: 300px;
+    margin: 0px;
+    border-radius: 10%;
+    transition: 1s;
+}
 
-
-
+.index-cate img:hover {
+    transform: rotate(5deg) scale(1.1);
+    transition: all 1s;
+}

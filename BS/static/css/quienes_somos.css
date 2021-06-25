@@ -1,23 +1,18 @@
-
-
-
-#quienes_somos{
+#quienes_somos {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin:auto;
+    margin: auto;
     border-top: solid 50px rgb(34, 33, 33);
     background: #333;
-    
-    
 }
 
-#bienvenida p{
+#bienvenida p {
     color: white;
     font-size: 20px;
 }
 
-#sucursal{
+#sucursal {
     font-family: 'New Tegomin', serif;
     color: white;
     font-size: 30px;
@@ -25,34 +20,27 @@
     margin: 20px 0px;
     text-decoration: none;
     border-top: solid 50px rgb(34, 33, 33);
-    
 }
 
-
-
-#sucursal .contenedor{
+#sucursal .contenedor {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 15px;
-    
-
 }
 
-#sucursal .contenedor img{
+#sucursal .contenedor img {
     width: 250px;
     height: 250px;
     border: solid 5px rgb(202, 103, 103);
     border-radius: 15px;
 }
-#sucursal article{
+
+#sucursal article {
     margin: 15px;
-    
 }
 
-
-
-@media (max-width: 562px){
+@media (max-width: 562px) {
     #quienes_somos img {
         width: 100%;
     }
@@ -60,6 +48,8 @@
 
 
 /*RESPONSIVE DESIGN : ADAPTABLE A DISP MOVIL*/
+
+
 /*
 @media screen and (max-width: 1220px){
     

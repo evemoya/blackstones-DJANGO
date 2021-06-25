@@ -1,10 +1,11 @@
-
-
 #banner_sucu1 {
     padding-top: 50px;
 }
 
-.contenedor_sucu1 /*img*/{
+.contenedor_sucu1
+/*img*/
+
+{
     width: 100%;
     height: 100vh;
     background: url(../img/Mauro/banner-maipu.jpg) no-repeat;
@@ -13,7 +14,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .contenedor_sucu1 h2 {
@@ -27,6 +27,7 @@
 
 
 /*Separador1*/
+
 .separador1-sucu {
     width: 100%;
     background-color: rgb(17, 16, 16);
@@ -42,7 +43,9 @@
     text-align: center;
 }
 
+
 /*Info Sucursal*/
+
 #info-sucu {
     width: 100%;
     background-color: rgb(17, 16, 16);
@@ -64,7 +67,6 @@
     border-radius: 10px;
     padding: 50px;
     background: url(../img/cortes_y_mas/mennu2.jpg);
-
 }
 
 .direccion h2 {
@@ -87,37 +89,33 @@
     background: url(../img/cortes_y_mas/barber.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-
 }
 
-.img-sucu-nunoa{
+.img-sucu-nunoa {
     width: 80%;
     height: 100vh;
     margin: auto;
     background: url(../img/cortes_y_mas/sucursal2.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-
 }
 
-.img-sucu-palto{
+.img-sucu-palto {
     width: 80%;
     height: 100vh;
     margin: auto;
     background: url(../img/cortes_y_mas/sucursal3.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-
 }
 
-.img-sucu-santiago{
+.img-sucu-santiago {
     width: 80%;
     height: 100vh;
     margin: auto;
     background: url(../img/cortes_y_mas/sucursal4.png) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-
 }
 
 
@@ -127,7 +125,6 @@
     border-bottom: 3px solid white;
     padding: 50px 0;
     background: url(../img/cortes_y_mas/mennu2.jpg);
-    
 }
 
 .titulo-equipo h2 {
@@ -146,8 +143,8 @@
 }
 
 .info-equipo img {
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
     margin: 20px;
     border: 8px solid white;
     border-radius: 50%;
@@ -159,7 +156,7 @@
     transition: all 1s;
 }
 
-@media (max-width: 427px){
+@media (max-width: 427px) {
     .contenedor_sucu1 h2 {
         width: 100%;
         font-size: 60px;
@@ -167,7 +164,7 @@
     }
 }
 
-@media (max-width: 1221px){
+@media (max-width: 1221px) {
     .direccion {
         margin-top: 50px;
     }

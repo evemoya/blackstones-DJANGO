@@ -1,6 +1,4 @@
-{% extends "base.html" %} 
-{% load static %} 
-{% block contenido %}
+{% extends "base.html" %} {% load static %} {% block contenido %}
 
 
 
@@ -21,52 +19,55 @@
 
 </section>
 
-
-
-
 <section id="info">
-    <h3>Clientes felices con su cambio de look
-    </h3>
-    <div class="contenedor">
 
-        <div class="info-barberia">
-            <a href="{% static 'img/cortes_y_mas/corte1_c.jpg' %}" data-lightbox="cortes" data-title="Clásico Alex turner">
-                <img src="{% static 'img/cortes_y_mas/corte1_c.jpg' %}" alt="">
-            </a>
-        </div>
-        <div class="info-barberia">
-            <a href="{% static 'img/cortes_y_mas/corte4.jpg' %}" data-lightbox="cortes" data-title="Vikingos">
-                <img src="{% static  'img/cortes_y_mas/corte4.jpg' %}" alt="">
-            </a>
-        </div>
-        <div class="info-barberia">
-            <a href="{% static 'img/cortes_y_mas/corte3_b.jpg' %}" data-lightbox="cortes" data-title="Galán">
-                <img src="{% static  'img/cortes_y_mas/corte3_b.jpg' %}" alt="">
-            </a>
-        </div>
-        <div class="info-barberia">
-            <a href="{% static  'img/cortes_y_mas/cortenino.jpg' %}" data-lightbox="cortes" data-title="Clásicos en ninos">
-                <img src="{% static  'img/cortes_y_mas/cortenino.jpg' %}" alt="">
-            </a>
-        </div>
+    <div class="info-barberia">
+        <h3>Clientes felices con su cambio de look</h3>
+        {% for reg in cortes %}
+
+        <a href="filtro_cate/Cortes">
+            <img class="reg" src="{{reg.foto.url}}" alt=""> {% endfor %}
+        </a>
     </div>
+
 </section>
+
+
 
 <section id="Ultimos_prod">
     <h3>Ultimos productos </h3>
 
-        <div class="contenido-tienda">
-            {% for reg in productos %}
+    <div class="contenido-tienda">
+        {% for reg in productos %}
 
-            <a href={{reg.nombre}}>
-                <img class="prod" src="{{reg.foto.url}}" alt="">
+        <a href={{reg.nombre}}>
+            <img class="prod" src="{{reg.foto.url}}" alt="">
+            <h3>{{reg.nombre}}</h3>
+
+
+        </a>
+
+        {% endfor %}
+    </div>
+
+
+
+</section>
+
+<section id="index_cate">
+    <h3>Categorias </h3>
+
+    <div class="index-cate">
+        {% for reg in categoria %}
+        <div>
+            <a href="filtro_cate/{{reg.nombre}}">
+                <img class="index-cate" src="{{reg.imagen.url}}" alt="">
                 <h3>{{reg.nombre}}</h3>
-            
-            
             </a>
-
-            {% endfor %}
         </div>
+        {% endfor %}
+    </div>
+
 
 </section>
 

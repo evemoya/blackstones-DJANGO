@@ -3,40 +3,48 @@
 
 <div style="text-align: center; text-decoration: none;">
 
-    <a href=" {% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
-    <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
-    <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
+    <LI style="text-decoration: none; color: white;">
+        <UL>
+            <a href=" {% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
+        </UL>
+        <br>
+        <UL>
+            <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
+        </UL>
+        <br>
+        <UL>
+            <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
+        </UL>
+    </LI>
+
+
+
+
+
 </div>
 
-
+<h2 style="text-align: center;">PRODUCTOS</h2>
 <div class="contenido-tienda ">
-
     {% for prod in productos %}
     <article>
-        <a href=" ">
-            <img class="prod " src="{{prod.foto.url}} " alt=" ">
-
-            <h4>{{prod.nombre}}</h4>
-
-
-        </a>
-
-
+        <img class="prod " src="{{prod.foto.url}} " alt=" ">
+        <h4>{{prod.nombre}}</h4>
+        <h4> precio : {{prod.precio}}</h4>
+        <h4> portada : {{prod.portada}}</h4>
+        <h4> publicado : {{prod.publicado}}</h4>
     </article>
-
     {% endfor %}
 </div>
-<div class="contenido-tienda ">
 
+
+<h2 style="text-align: center;">PELUQUEROS</h2>
+<div class="contenido-tienda ">
     {% for peluqueros in peluqueros %}
     <article>
-        <a href=" ">
-            <img class="prod " src="{{peluqueros.foto.url}} " alt=" ">
+        <img class="prod " src="{{peluqueros.foto.url}} " alt=" ">
+        <h4>{{peluqueros.nombre}}</h4>
+        <h4> publicado : {{peluqueros.publicado}}</h4>
 
-            <h4>{{peluqueros.nombre}}</h4>
-
-
-        </a>
 
 
     </article>
@@ -44,23 +52,35 @@
     {% endfor %}
 </div>
 
-</div>
-<div class="contenido-tienda ">
 
+
+<h2 style="text-align: center;">SUCURSALES</h2>
+<div class="contenido-tienda ">
     {% for sucursales in sucursales %}
     <article>
-        <a href=" ">
-            <img class="prod " src="{{sucursales.foto.url}} " alt=" ">
-
-            <h4>{{sucursales.nombre}}</h4>
-
-
-        </a>
+        <img class="prod " src="{{sucursales.foto.url}} " alt=" ">
+        <h4>{{sucursales.nombre}}</h4>
+        <h4> publicado : {{sucursales.publicado}}</h4>
 
 
     </article>
-
     {% endfor %}
+</div>
+
+<h2 style="text-align: center;">CORTES</h2>
+<div class="contenido-tienda ">
+
+    {% for corte in cortes %}
+    <article>
+        <img class="prod " src="{{corte.foto.url}} " alt=" ">
+        <h4>{{corte.nombre}}</h4>
+        <h4> publicado : {{corte.publicado}}</h4>
+        <h4> peluquero : {{corte.peluquero.apodo}}</h4>
+
+    </article>
+    {% endfor %}
+
+
 </div>
 
 

@@ -82,3 +82,8 @@ footer .footer-pie img {
 .redes a {
     text-decoration: none;
 }
+
+.filtros {
+    display: flex;
+    justify-content: center;
+}

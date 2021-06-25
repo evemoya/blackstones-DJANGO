@@ -1,126 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>black stones</title>
-    <link rel="icon" type="image/png" href="img/logos/black stones.png">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/agendarhora.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+{% extends "base.html" %} {% load static %} {% block contenido %}
 
 
-</head>
-
-<body>
-    <div class="contenido-global">
-        <header>
-            <input type="checkbox" name="" id="menu-bar">
-            <label class="icon-align-justify" for="menu-bar"></label>
-            <nav class="menu">
-                <a href="index.html">Home</a>
-                <a href="Quienes_somos.html">Quienes somos</a>
-                <a href="Servicios.html">Servicios</a>
-                <a href="galeria.html">Galeria</a>
-                <a href="agendarhora.html">Agenda tu hora</a>
-                <a href="tienda.html">Tienda</a>
-                <a href="iniciosesion.html">Inicia sesion</a>
-                <a href="registrate.html">Registrate</a>
-                <a href="contactanos.html">Contactanos</a>
-                
-
-
-            </nav>
-
-            <nav id="contenedor-logo-principal">
-                <img src="img/logos/black stones.png" alt="">
-                <h1>Black Stones Barber</h1>
-
-            </nav>
+<section class="form-re">
+    <article>
+        <h4>Registrate</h4>
+        <form action="" method="post" onsubmit="return validarPass()">
+            <input class="controls" type="text" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese su Nombre" required>
+            <input class="controls" type="text" type="text" name="txtApellido" id="txtApellido" placeholder="Ingrese su Apellido" required>
+            <input class="controls" type="text" type="email" name="txtEmail" id="txtEmail" placeholder="Ingrese su Correo" required>
+            <center>
+                <h5> Datos de Acceso</h5>
+            </center>
+            <br>
+            <input class="controls" type="text" type="text" name="txtApellido" id="txtApellido" placeholder="Nombre de usuario" required>
+            <input class="controls" type="password" name="txtPass1" id="txtPass1" placeholder="nueva contraseña" required>
+            <center>
+                <h5> (la contraseña debe tener un minimo de 6 caracteres y un max de 32)</h5>
+            </center>
+            <input class="controls" type="password" name="txtPass2" id="txtPass2" placeholder="Confirme contraseña" required>
 
 
 
+            <input class="botons" type="submit" value="Registrate">
+            <input class="botons" type="reset" value="Limpiar">
+            <p>Estoy de acuerdo con <a href="#">Terminos y condiciones</a> </p>
+            <p> ¿Ya tienes cuenta? <a href="{% url 'LOGIN' %}"> Inicia sesión </a></p>
 
-        </header>
+        </form>
+    </article>
+</section>
 
-        <main>
-            <div class="banner">
-                <div class="contenedor">
-
-                    <h2>Black Stones Barber</h2>
-                    <p>Buscas tu corte ideal, atrevete con nosotras!</p>
-                    <a href="informaciones.html">Informaciones</a>
-                </div>
-
-
-            </div>
-
-            <section class="form-re" >
-                <article>
-                    <h4>Registrate</h4>
-                    <form action="" method="">
-                        <input class="controls" type="text" type="text" name="txtNombre" id="Nombre" placeholder="Ingrese su Nombre" required pattern="[a-z A-Z]+">
-                        <input class="controls" type="text" type="text" name="txtApellido" id="Apellido" placeholder="Ingrese su Apellido" required pattern="[a-z A-Z]+">
-                        <input class="controls" type="text" type="email" name="email" id="Email" placeholder="Ingrese su Correo" required>
-                        <input class="controls" type="password" name="password" id="password" placeholder="nueva contraseña" required>
-                       <center> <h5> (la contraseña debe tener un minimo de 6 caracteres y un max de 32)</h5> </center>
-                        <input class="controls" type="password" name="password" id="password" placeholder="Confirme contraseña" required>
+<script>
+    function validarPass() {
+        var pass1 = document.getElementById(txtPass1).value;
+        var pass2 = document.getElementById(txtPass2).value;
+        if (pass1 != pass2) {
+            alert("Contraseñas son diferentes");
+            return false;
+        }
+        return true
+    }
+</script>
 
 
-
-                        <input class="botons" type="submit" value="Registrate">
-                        <p>Estoy de acuerdo con <a href="#">Terminos y condiciones</a> </p>
-                        <p> ¿Ya tienes cuenta? <a href="iniciosesion.html"> Inicia sesión </a></p>
-                      
-                    </form>
-                   
-                </article>
-                
-
-            </section>
-
-
-
-
-
-
-        </main>
-
-
-        <footer>
-            <section class="footer-pie">
-                <div class="contenedor">
-                    <p>®Black stones barber 2021- Sitio web</p>
-
-                </div>
-                <div class="redes">
-                    <a href="https://www.facebook.com/labarberaperu">
-                        <img src="img/footer/face.png" alt="">
-
-                    </a>
-                    <a href="https://www.instagram.com/lefemmebarber/">
-                        <img src="img/footer/instagram.png" alt="">
-
-                    </a>
-
-
-                </div>
-
-            </section>
-
-
-        </footer>
-
-        <script src="js/main.js"></script>
-
-
-    </div>
-
-</body>
-
-</html>
+{% endblock contenido %} {% block js %} {% endblock js %}
