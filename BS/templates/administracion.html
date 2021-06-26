@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block contenido %}
+{% extends "base.html" %} {% load static %} {% block css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> {% endblock css %} {% block contenido %}
+
 
 
 <div style="text-align: center; text-decoration: none;">
@@ -7,28 +9,26 @@
         <UL>
             <a href=" {% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
         </UL>
-        <br>
         <UL>
             <a href="{% url 'REGSUCU' %} ">REGISTRO SUCURSAL</a>
         </UL>
-        <br>
         <UL>
             <a href="{% url 'REGPELU' %} ">REGISTRO PELUQUERO</a>
         </UL>
+        <UL>
+            <a href="{% url 'REGCORTE' %} ">REGISTRO CORTE</a>
+        </UL>
     </LI>
 
-
-
-
-
 </div>
-
+<!--
 <h2 style="text-align: center;">PRODUCTOS</h2>
 <div class="contenido-tienda ">
     {% for prod in productos %}
     <article>
         <img class="prod " src="{{prod.foto.url}} " alt=" ">
-        <h4>{{prod.nombre}}</h4>
+        <h4> ID : {{prod.id_auto_inc}}</h4>
+        <h4> nombre : {{prod.nombre}}</h4>
         <h4> precio : {{prod.precio}}</h4>
         <h4> portada : {{prod.portada}}</h4>
         <h4> publicado : {{prod.publicado}}</h4>
@@ -82,7 +82,263 @@
 
 
 </div>
+-->
+
+<div style="text-align: center; color: red;">{{mensaje}} </div>
+
+<section id="Admin_productos">
+    <div style="text-align: center; font-size: xx-large;">Administracion de Productos</div>
+
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>PRECIO</th>
+                    <th>DESCRIPCION</th>
+                    <th>FOTO PRODUCTO</th>
+                    <th>CATEGORIA </th>
+                    <th>PUBLICADO</th>
+                    <th>PORTADA</th>
+                    <th>OPERACIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+
+                <tr>
+                    <td>{{producto.id_auto_inc}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>
+                        <img src="{{producto.foto.url}}" alt="" width="100px" height="100px">
+
+                    </td>
+                    <td>{{producto.categoria.nombre}}</td>
+                    <td>
+                        {% if producto.publicado %}
+                        <div style="text-align: center;">✅</div>
+                        {% else %}
+                        <div style="text-align: center;">❌</div>
+                        {% endif %}
+                    </td>
+
+
+                    <td>
+                        {% if producto.portada %}
+                        <div style="text-align: center;">✅</div>
+                        {% else %}
+                        <div style="text-align: center;">❌</div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" onclick="eliminar('{{producto.nombre}}')">Eliminar</button>
+                        <button class="btn btn-outline-warning" onclick="modificar_prod('{{producto.nombre}}')"> Modificar</button>
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<section id="Admin_Peluqueros">
+    <div style="text-align: center; font-size: xx-large;">Administracion de Peluqueros</div>
+
+
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+
+                <tr>
+
+                    <th>NOMBRE</th>
+                    <th>apodo</th>
+                    <th>DESCRIPCION</th>
+                    <th>FOTO Peluquero</th>
+                    <th>SUCURSAL</th>
+                    <th>CATEGORIA </th>
+                    <th>PUBLICADO</th>
+                    <th>OPERACIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for peluquero in peluqueros %}
+
+                <tr>
+                    <td>{{peluquero.nombre}}</td>
+                    <td>{{peluquero.apodo}}</td>
+                    <td>{{peluquero.descripcion}}</td>
+                    <td>
+                        <img src="{{peluquero.foto.url}}" alt="" width="100px" height="100px">
+
+                    </td>
+                    <td>{{peluquero.Sucursal.nombre}}</td>
+                    <td>{{peluquero.categoria.nombre}}</td>
+                    <td>
+                        {% if peluquero.publicado %}
+                        <div style="text-align: center;">✅</div>
+                        {% else %}
+                        <div style="text-align: center;">❌</div>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <button class="btn btn-outline-danger" onclick="eliminar('{{peluquero.nombre}}')">Eliminar</button>
+                        <button class="btn btn-outline-warning" onclick="modificar_pelu('{{peluquero.nombre}}')"> Modificar</button>
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="Admin_SUCURSALES">
+    <div style="text-align: center; font-size: xx-large;">Administracion de Sucursales</div>
+
+
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+
+                <tr>
+
+                    <th>id_auto_inc</th>
+                    <th>nombre</th>
+                    <th>comuna</th>
+                    <th>direccion</th>
+                    <th>telefono</th>
+                    <th>horarios</th>
+                    <th>FOTO Sucursal</th>
+                    <th>CATEGORIA </th>
+                    <th>PUBLICADO</th>
+                    <th>OPERACIONES</th>
+                </tr>
+            </thead>
 
 
 
-{% endblock contenido %}
+            <tbody>
+                {% for sucursal in sucursales %}
+
+                <tr>
+                    <td>{{sucursal.id_auto_inc}}</td>
+                    <td>{{sucursal.nombre}}</td>
+                    <td>{{sucursal.comuna}}</td>
+                    <td>{{sucursal.direccion}}</td>
+                    <td>{{sucursal.telefono}}</td>
+                    <td>{{sucursal.horarios}}</td>
+
+
+                    <td>
+                        <img src="{{sucursal.foto.url}}" alt="" width="100px" height="100px">
+
+                    </td>
+                    <td>{{sucursal.categoria.nombre}}</td>
+                    <td>
+                        {% if sucursal.publicado %}
+                        <div style="text-align: center;">✅</div>
+                        {% else %}
+                        <div style="text-align: center;">❌</div>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <button class="btn btn-outline-danger" onclick="eliminar('{{sucursal.nombre}}')">Eliminar</button>
+                        <button class="btn btn-outline-warning" onclick="modificar_sucu('{{sucursal.nombre}}')"> Modificar</button>
+                    </td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<section id="Admin_Cortes">
+    <div style="text-align: center; font-size: xx-large;">Administracion de Cortes</div>
+
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+
+                <tr>
+
+                    <th>NOMBRE</th>
+                    <th>COMENTARIO</th>
+                    <th>FOTO CORTE</th>
+                    <th>CATEGORIA </th>
+                    <th>PELUQUERO </th>
+                    <th>PUBLICADO</th>
+                    <th>OPERACIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for corte in cortes %}
+
+                <tr>
+                    <td>{{corte.nombre}}</td>
+                    <td>{{corte.comentario}}</td>
+                    <td>
+                        <img src="{{corte.foto.url}}" alt="" width="100px" height="100px">
+
+                    </td>
+                    <td>{{corte.categoria.nombre}}</td>
+                    <td>{{corte.peluquero.nombre}}</td>
+                    <td>
+                        {% if corte.publicado %}
+                        <div style="text-align: center;">✅</div>
+                        {% else %}
+                        <div style="text-align: center;">❌</div>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <button class="btn btn-outline-danger" onclick="eliminar('{{corte.nombre}}')">Eliminar</button>
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+{% endblock contenido %} {% block js %}
+<script>
+    function modificar_prod(nombre) {
+        location.href = '/modificar_prod/' + nombre + '/';
+    }
+
+    function modificar_sucu(nombre) {
+        location.href = '/modificar_sucu/' + nombre + '/';
+    }
+
+    function modificar_pelu(nombre) {
+        location.href = '/modificar_pelu/' + nombre + '/';
+    }
+
+
+    function eliminar(nombre) {
+        var opcion = confirm("Eliminar " + nombre + "?")
+        if (opcion == true) {
+            location.href = '/eliminar/' + nombre + '/';
+        }
+    }
+</script>
+{% endblock js %}

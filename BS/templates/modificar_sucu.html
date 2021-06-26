@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'MODSUCU' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> Modificacion Sucursal</h2>
+
+        <div class="contenedor-input">
+            <p>Nombre Sucursal :
+                <input class="control" type="text" value ="{{sucursal.nombre}}" name="txtNombre" id="txtNombre" 
+                placeholder=" ingrese nombre sucursal" minlength="3" maxlength="50" required>
+            </p>
+
+
+            <p> Ingrese Comuna
+                <input class="control" type="text" value ="{{sucursal.comuna}}" name="txtComuna" id="txtComuna" 
+                placeholder=" ingrese nombre Comuna" minlength="3" maxlength="50" required>
+            </p>
+
+            <p>Ingrese direccion
+                <input class="control" type="text" value ="{{sucursal.direccion}}" name="txtDireccion" id="txtDireccion" 
+                placeholder=" ingrese Direccion" minlength="3" maxlength="100"  tittle="caracteres entre 3 y 100 letras">
+            </p>
+
+
+            <p>telefono
+                <input type="number" name="txtTelefono" value ="{{sucursal.telefono}}" id="txtTelefono" placeholder="Ingrese Telefono" required>
+            </p>
+
+            <p> Ingrese Correo
+                <input class="control" type="email" value ="{{sucursal.correo}}" name="txtCorreo" id="txtCorreo" 
+                placeholder=" ingrese Correo" minlength="3" maxlength="50" tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <p> Ingrese Horario
+                <textarea name="txtHorario"  id="" cols="20" rows="1">{{sucursal.horarios}}</textarea>
+            </p>
+
+            <p>Imagen Actual:
+                <a href="{{sucursal.foto.url}}">FOTO ACTUAL</a>
+                <input type="file" name="txtImg" id="txtImg">
+            </p>
+
+            </br></br></br>
+            
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+{% endblock contenido %}

@@ -4,7 +4,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import  index, galeria,ficha,administracion,cerrar_sesion,filtro_cate, registrate ,filtro_categoria, buscar_texto,  login, agendarhora, informaciones, tienda, regprod, regpelu, regsucu,regcorte, Quienes_somos, sucursal, barberos
+from .views import  index, galeria,ficha,administracion,cerrar_sesion,filtro_cate,eliminar, modificar, registrate ,filtro_categoria, buscar_texto,  login, agendarhora, informaciones, tienda, regprod, regpelu, regsucu,regcorte,modprod,modsucu,modpelu, Quienes_somos, sucursal, barberos
 
 
 urlpatterns = [
@@ -26,9 +26,28 @@ urlpatterns = [
 
     #administracion
     path ('administracion/', administracion, name= 'ADM'),
-    path ('regprod/',regprod, name='REGPROD'),
+    path ('eliminar/<id>/',eliminar, name='ELIMINAR'),
+   
+
+    #PAGINAS DE MODIFICACION 
+    path ('modificar_prod/<id>/', modificar, name= 'MODIFICARPROD'),
+    path ('modificar_sucu/<id>/', modificar, name= 'MODIFICARSUCU'),
+    path ('modificar_pelu/<id>/', modificar, name= 'MODIFICARPELU'),
+    #path ('modificar_sucu/<id>/', modificar_prod, name= 'MODIFICARSUCU'),
+
+    path ('modprod/', modprod, name= 'MODPROD'),
+    path ('modsucu/', modsucu, name= 'MODSUCU'),
+    path ('modpelu/', modpelu, name= 'MODPELU'),
+
+    #PAGINAS DE REGISTRO
     path ('regpelu/',regpelu, name='REGPELU'),
     path ('regsucu/',regsucu, name='REGSUCU'),
+    path ('regprod/',regprod, name='REGPROD'),
+    
+    
+    
+    
+
 
     #accesos
     path ('login/', login, name= 'LOGIN'),

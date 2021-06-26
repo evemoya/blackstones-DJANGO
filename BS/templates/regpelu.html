@@ -25,7 +25,8 @@
             </br></br>
 
             <p>Sucursal
-                <select name="cboSucursales" id="cboSucursales" required>
+                <select name="cboSucursales" id="cboSucursales" required tittle="Seleccione Sucursal para peluquero">
+                <option ></option>
                 {% for item in sucursales%}
                     <option >{{item.nombre}}</option>
                 {% endfor %}

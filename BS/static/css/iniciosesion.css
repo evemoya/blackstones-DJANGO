@@ -1,16 +1,16 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
- 
-body{
+
+body {
     background-image: url(/img/blanco.jpg);
-    background-size: 100vw 100vh ;
+    background-size: 100vw 100vh;
     background-attachment: fixed;
     margin: 0;
-    
 }
+
 .form-re {
     width: 400px;
     background-color: black;
@@ -19,18 +19,14 @@ body{
     margin-top: 30px;
     border-radius: 5px;
     font-family: 'calibri';
-    color:white;
+    color: white;
     box-shadow: 7px 13px 37px #000;
     box-sizing: border-box;
-
 }
-
 
 .form-re a:hover {
     color: white;
     text-decoration: underline;
-    
-    
 }
 
 .form-re .botons {
@@ -42,33 +38,34 @@ body{
     margin: 16px 0;
     font-size: 16px;
     border-radius: 5px;
-
-
-
 }
 
-.botons:hover{
+.botons {
+    width: 100%;
+    background: darkred;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.botons:hover {
     cursor: pointer;
     background: coral;
 }
 
-.op  {
+.op {
     border-radius: 5px;
     color: gray;
     background: white;
     height: 50px;
     width: 100%;
-    
-    
-
-   
 }
 
-@media (max-width:400px){
-    .form-re{
+@media (max-width:400px) {
+    .form-re {
         width: 100%;
     }
 }
-
-
-

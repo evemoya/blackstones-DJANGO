@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% load static %} {% block contenido %}
+
+
+
+<section class="form-re">
+    <form class="form-registro" action="{% url 'MODPELU' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-titutlo"> modificacion Peluquero </h2>
+
+        <div class="contenedor-input">
+            <p>Nombre Peluquero :
+                <input class="control" type="text" value="{{peluquero.nombre}}" name="txtNombre" id="txtNombre" placeholder=" ingrese nombre producto" minlength="3" maxlength="50" required tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <p>Apodo :
+                <input class="control" type="text" value="{{peluquero.apodo}}" name="txtApodo" id="txtApodo" placeholder=" ingrese nombre producto" minlength="3" maxlength="50" required tittle="caracterres entre 3 y 50 letras">
+            </p>
+
+            <div>
+                <section>
+                    <p>Imagen Actual:
+                        <a href="{{peluquero.foto.url}}">FOTO ACTUAL</a>
+                        <input type="file" name="txtImg" id="txtImg">
+                    </p>
+                </section>
+            </div>
+
+            <div>
+                </br>
+                </br>
+                <p>Sucursal Actual "{{peluquero.Sucursal.nombre}}"</p>
+                <p>sucursal
+                    <select name="cboSucursales" id="cboSucursales" required tittle="Debe seleccionar sucursal">
+                    <OPTION></OPTION>
+                {% for item in sucursales%}
+                    <option >{{item.nombre}}</option>
+                {% endfor %}
+                
+                    </select>
+                </p>
+            </div>
+
+            </br>
+            </br>
+            <p>Descripcion <br>
+                <textarea name="txtDesc" id="" cols="30" rows="10">{{peluquero.descripcion}}</textarea>
+            </p>
+
+
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+
+
+            <input class="botons" type="submit" value="registrar">
+            <input class="botons" type="reset" value="Limpiar">
+
+
+        </div>
+        <h2>{{mensaje}}</h2>
+    </form>
+
+</section>
+
+
+
+{% endblock contenido %}

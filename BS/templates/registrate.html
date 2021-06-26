@@ -30,17 +30,20 @@
     </article>
 </section>
 
-<script>
-    function validarPass() {
-        var pass1 = document.getElementById(txtPass1).value;
-        var pass2 = document.getElementById(txtPass2).value;
-        if (pass1 != pass2) {
-            alert("Contraseñas son diferentes");
-            return false;
+
+
+
+{% endblock contenido %} 
+{% block js %}
+    <script>
+        function validarPass() {
+            var pass1 = document.getElementById(txtPass1).value;
+            var pass2 = document.getElementById(txtPass2).value;
+            if (pass1 != pass2) {
+                alert("Contraseñas son diferentes");
+                return false;
+            }
+            return true
         }
-        return true
-    }
-</script>
-
-
-{% endblock contenido %} {% block js %} {% endblock js %}
+    </script>
+ {% endblock js %}
