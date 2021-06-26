@@ -19,40 +19,31 @@ urlpatterns = [
     path ('agenda/',agendarhora, name='AGENDARHORA'),
 
     #contenido / Fichas
-    path ('sucursal/<id>/', sucursal, name='SUCURSAL'),
     path ('ficha/<id>/', ficha, name='FICHA'),
+    path ('sucursal/<id>/', sucursal, name='SUCURSAL'),
     path ('barberos/<id>/', barberos, name= 'BARBEROS'),
 
 
-    #administracion
+    #ADMINISTRACION 
     path ('administracion/', administracion, name= 'ADM'),
-    path ('eliminar/<id>/',eliminar, name='ELIMINAR'),
+    ####PAGINAS DE REGISTRO
+    path ('regpelu/',regpelu, name='REGPELU'),
+    path ('regsucu/',regsucu, name='REGSUCU'),
+    path ('regprod/',regprod, name='REGPROD'),
    
-
     #PAGINAS DE MODIFICACION 
     path ('modificar_prod/<id>/', modificar, name= 'MODIFICARPROD'),
     path ('modificar_sucu/<id>/', modificar, name= 'MODIFICARSUCU'),
     path ('modificar_pelu/<id>/', modificar, name= 'MODIFICARPELU'),
-    #path ('modificar_sucu/<id>/', modificar_prod, name= 'MODIFICARSUCU'),
-
     path ('modprod/', modprod, name= 'MODPROD'),
     path ('modsucu/', modsucu, name= 'MODSUCU'),
     path ('modpelu/', modpelu, name= 'MODPELU'),
+    path ('eliminar/<id>/',eliminar, name='ELIMINAR'),
 
-    #PAGINAS DE REGISTRO
-    path ('regpelu/',regpelu, name='REGPELU'),
-    path ('regsucu/',regsucu, name='REGSUCU'),
-    path ('regprod/',regprod, name='REGPROD'),
-    
-    
-    
-    
-
-
-    #accesos
+  
+    #ACCESOS
     path ('login/', login, name= 'LOGIN'),
     path ('cerrar/', cerrar_sesion, name= 'CERRAR'),
-    path ('filtro_cate/<id>', filtro_cate, name= 'FILTROCATE'),
     path ('registrate', registrate, name= 'REGISTRATE'),
 
     #Filtros

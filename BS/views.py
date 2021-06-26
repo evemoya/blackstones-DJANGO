@@ -80,7 +80,7 @@ def filtro_cate(request, id):
     contexto = {"sucursales": sucursales, "categorias":categorias, "peluqueros":peluqueros, "productos": productos, "cortes":cortes, "cant":cant}
     return render(request, "galeria.html", contexto)
 
-#error con contador y filtros
+#OK
 def buscar_texto(request):
     categorias = Categoria.objects.all()
     productos = Producto.objects.filter(publicado=True)
@@ -122,19 +122,11 @@ def tienda(request):
     contexto = {"productos" : productos}
     return render(request, "tienda.html", contexto)
 
-#ok
+#OK / Falta darle estilo
 def ficha(request, id):
     productos = Producto.objects.get(nombre=id)
     contexto = {"productos":productos}
     return render(request, "ficha.html", contexto)
-
-#ok
-def barberos(request, id):
-    peluquero = Peluquero.objects.get(nombre=id)
-    sucursal = Sucursal.objects.all
-    cortes = Corte.objects.filter(peluquero=peluquero, publicado = True)
-    contexto =  {"peluquero" : peluquero, "sucursal" : sucursal, "cortes":cortes}
-    return render(request, "barberos.html", contexto)
 
 #ok
 def Quienes_somos(request):
@@ -149,23 +141,39 @@ def sucursal(request, id):
     contexto = {"sucursal": sucursal, "peluqueros": peluqueros}
     return render(request, "sucursal.html", contexto)
 
-
-@login_required(login_url='/login/')
-def administracion(request):
-    mensaje=""
-    categorias = Categoria.objects.all()
-    sucursales = Sucursal.objects.all()
+#ok
+def barberos(request, id):
+    peluquero = Peluquero.objects.get(nombre=id)
+    sucursal = Sucursal.objects.all
+    cortes = Corte.objects.filter(peluquero=peluquero, publicado = True)
+    contexto =  {"peluquero" : peluquero, "sucursal" : sucursal, "cortes":cortes}
+    return render(request, "barberos.html", contexto)
+#ok 
+def regcorte(request):
     peluqueros = Peluquero.objects.all()
-    productos = Producto.objects.all()
-    cortes = Corte.objects.all()
-    contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje}
-    return render(request, "administracion.html", contexto)
+    contexto = {"peluqueros" : peluqueros}
 
+    if request.POST:
+        nombre = request.POST.get("txtNombre")
+        desc = request.POST.get("txtDesc")
+        foto = request.FILES.get("txtImg")
+        cate = "Cortes"
+        obj_categoria = Categoria.objects.get(nombre=cate)
+        pelu = request.POST.get("cboPeluquero")
+        obj_pelu = Peluquero.objects.get(nombre=pelu)
+        corte = Corte(
+            nombre=nombre,
+            foto = foto,
+            comentario=desc,
+            peluquero = obj_pelu,
+            categoria = obj_categoria
+            )
+        corte.save()
 
+        contexto = {"peluqueros" : peluqueros, "mensaje":"Gracias por subir tu corte ya lo publicaremos"} 
+    return render(request, "regcorte.html", contexto)
 
-
-
-
+#FALTA VALIDAR SERVICIO DE REGISTRAR CUENTA
 def registrate(request):
     return render(request, "registrate.html")
 
@@ -467,30 +475,21 @@ def regprod(request):
 
     return render(request, "regprod.html", contexto)
 
-#ok
-def regcorte(request):
+
+@login_required(login_url='/login/')
+def administracion(request):
+    mensaje=""
+    categorias = Categoria.objects.all()
+    sucursales = Sucursal.objects.all()
     peluqueros = Peluquero.objects.all()
-    contexto = {"peluqueros" : peluqueros}
+    productos = Producto.objects.all()
+    cortes = Corte.objects.all()
+    contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje}
+    return render(request, "administracion.html", contexto)
 
-    if request.POST:
-        nombre = request.POST.get("txtNombre")
-        desc = request.POST.get("txtDesc")
-        foto = request.FILES.get("txtImg")
-        cate = "Cortes"
-        obj_categoria = Categoria.objects.get(nombre=cate)
-        pelu = request.POST.get("cboPeluquero")
-        obj_pelu = Peluquero.objects.get(nombre=pelu)
-        corte = Corte(
-            nombre=nombre,
-            foto = foto,
-            comentario=desc,
-            peluquero = obj_pelu,
-            categoria = obj_categoria
-            )
-        corte.save()
 
-        contexto = {"peluqueros" : peluqueros, "mensaje":"Gracias por subir tu corte ya lo publicaremos"} 
-    return render(request, "regcorte.html", contexto)
+
+
 
     ##############################
 
