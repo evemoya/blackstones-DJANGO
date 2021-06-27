@@ -43,7 +43,7 @@ def cerrar_sesion(request):
 #ok
 def index(request):
     categoria = Categoria.objects.all()
-    productos = Producto.objects.filter(portada=True)[:5]
+    productos = Producto.objects.filter(portada=True)[:3]
     cortes = Corte.objects.filter(publicado=True)[:3]
     contexto = {"productos":productos, "categoria": categoria, "cortes" :cortes}
     return render(request, "index.html", contexto)
@@ -59,11 +59,11 @@ def filtro_categoria(request):
     if request.POST:
         categoria = request.POST.get("cboCategoria")
         obj_cate = Categoria.objects.get(nombre=categoria)
-        productos = Producto.objects.filter(categoria=obj_cate)
-        sucursales = Sucursal.objects.filter(categoria=obj_cate)
-        peluqueros = Peluquero.objects.filter(categoria=obj_cate)
-        cortes = Corte.objects.filter(categoria=obj_cate)
-        cant = Producto.objects.filter(categoria=obj_cate).count() + Sucursal.objects.filter(categoria=obj_cate).count() + Peluquero.objects.filter(categoria=obj_cate).count() + Corte.objects.filter(categoria=obj_cate).count()
+        productos = Producto.objects.filter(categoria=obj_cate, publicado = True)
+        sucursales = Sucursal.objects.filter(categoria=obj_cate, publicado = True)
+        peluqueros = Peluquero.objects.filter(categoria=obj_cate, publicado = True)
+        cortes = Corte.objects.filter(categoria=obj_cate, publicado = True)
+        cant = Producto.objects.filter(categoria=obj_cate,publicado=True).count() + Sucursal.objects.filter(categoria=obj_cate, publicado=True).count() + Peluquero.objects.filter(categoria=obj_cate, publicado=True).count() + Corte.objects.filter(categoria=obj_cate, publicado=True).count()
 
     contexto = {"productos": productos, "sucursales":sucursales, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias, "cant":cant}
     return render(request, "galeria.html", contexto)
@@ -90,13 +90,25 @@ def buscar_texto(request):
     #cant = Producto.objects.filter(publicado=True).count() + Sucursal.objects.filter(publicado=True).count() + Peluquero.objects.filter(publicado=True).count() + Corte.objects.filter(publicado=True).count()
     if request.POST:
         texto = request.POST.get("txtTexto")
-        productos = Producto.objects.filter(nombre__contains=texto)
-        sucursales = Sucursal.objects.filter(nombre__contains=texto) or Sucursal.objects.filter(comuna__contains=texto) or Sucursal.objects.filter(direccion__contains=texto)
+        productos = Producto.objects.filter(nombre__contains=texto) or Producto.objects.filter(descripcion__contains=texto)
+        sucursales = Sucursal.objects.filter(nombre__contains=texto) or Sucursal.objects.filter(comuna__contains=texto) or Sucursal.objects.filter(direccion__contains=texto) or Sucursal.objects.filter(correo__contains=texto)
         peluqueros = Peluquero.objects.filter(nombre__contains=texto) or Peluquero.objects.filter(descripcion__contains=texto) or  Peluquero.objects.filter(apodo__contains=texto)
         cortes = Corte.objects.filter(nombre__contains=texto)
         #cant = Producto.objects.filter(nombre__contains=texto).count() + Producto.objects.filter(descripcion__contains=texto).count() + Sucursal.objects.filter(nombre__contains=texto).count() + Sucursal.objects.filter(comuna__contains=texto).count() + Sucursal.objects.filter(direccion__contains=texto).count() + Peluquero.objects.filter(nombre__contains=texto).count() + Peluquero.objects.filter(descripcion__contains=texto).count() + Peluquero.objects.filter(apodo__contains=texto).count()
-    contexto = {"productos": productos, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias, "sucursales":sucursales}
-    return render(request, "galeria.html", contexto)
+        contexto = {"productos": productos, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias, "sucursales":sucursales}
+        return render(request, "galeria.html", contexto)
+    
+    #BUSCADOR SIN TEXTO MUESTA TODOS LOS RESULTADO
+    elif request.POST is "": 
+        categorias = Categoria.objects.all()
+        productos = Producto.objects.filter(publicado=True)
+        sucursales = Sucursal.objects.filter(publicado=True)
+        peluqueros = Peluquero.objects.filter(publicado=True)
+        cortes = Corte.objects.filter(publicado=True)
+        contexto = {"productos": productos, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias, "sucursales":sucursales}
+        return render(request, "galeria.html", contexto)
+
+
  
 #ok
 def galeria(request):
@@ -105,7 +117,8 @@ def galeria(request):
     sucursales = Sucursal.objects.filter(publicado=True)
     peluqueros = Peluquero.objects.filter(publicado=True)
     cortes = Corte.objects.filter(publicado=True)
-    contexto = {"productos": productos, "sucursales":sucursales, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias}
+    cant = Producto.objects.filter(publicado=True).count() + Sucursal.objects.filter(publicado=True).count() + Peluquero.objects.filter(publicado=True).count() + Corte.objects.filter(publicado=True).count()
+    contexto = {"productos": productos, "sucursales":sucursales, "peluqueros":peluqueros, "cortes":cortes, "categorias": categorias , "cant":cant}
     return render(request, "galeria.html", contexto)
 
 #Convertir a Formulario
@@ -122,7 +135,7 @@ def tienda(request):
     contexto = {"productos" : productos}
     return render(request, "tienda.html", contexto)
 
-#OK / Falta darle estilo
+#OK
 def ficha(request, id):
     productos = Producto.objects.get(nombre=id)
     contexto = {"productos":productos}
@@ -390,6 +403,7 @@ def modpelu(request):
 #ok
 @login_required(login_url='/login/')
 def regsucu(request):
+        usuario_actual = request.user.username
         categorias = Categoria.objects.all()
         contexto = {"categorias" : categorias}
 
@@ -413,7 +427,8 @@ def regsucu(request):
                 foto = foto,
                 correo = correo,
                 horarios = horarios,
-                categoria = obj_categoria
+                categoria = obj_categoria,
+                usuario= usuario_actual
                 )
             sucu.save()
             contexto = {"categorias" : categorias, "mensaje":"Sucursal grabada"} 
@@ -424,6 +439,7 @@ def regsucu(request):
 @login_required(login_url='/login/')
 def regpelu(request):
     sucursales = Sucursal.objects.all()
+    usuario_actual = request.user.username
     contexto = {"sucursales" : sucursales}
 
     if request.POST:
@@ -442,7 +458,8 @@ def regpelu(request):
             descripcion=desc,
             foto = foto,
             categoria = obj_categoria,
-            Sucursal = obj_sucursal
+            Sucursal = obj_sucursal,
+            usuario= usuario_actual
             )
         pelu.save()
         contexto = {"sucursales" : sucursales, "mensaje":"Peluquero grabado"} 
@@ -453,6 +470,7 @@ def regpelu(request):
 @login_required(login_url='/login/')
 def regprod(request):
     categorias = Categoria.objects.all()
+    usuario_actual = request.user.username
     contexto = {"categorias" : categorias}
 
     if request.POST:
@@ -468,7 +486,8 @@ def regprod(request):
             precio=precio,
             descripcion=desc,
             foto = foto,
-            categoria = obj_categoria
+            categoria = obj_categoria,
+            usuario= usuario_actual
             )
         prod.save()
         contexto = {"categorias" : categorias, "mensaje":"producto grabado"} 
@@ -478,14 +497,27 @@ def regprod(request):
 
 @login_required(login_url='/login/')
 def administracion(request):
-    mensaje=""
-    categorias = Categoria.objects.all()
-    sucursales = Sucursal.objects.all()
-    peluqueros = Peluquero.objects.all()
-    productos = Producto.objects.all()
-    cortes = Corte.objects.all()
-    contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje}
-    return render(request, "administracion.html", contexto)
+    usuario_actual = request.user.username
+    if usuario_actual == "admin":
+        mensaje=""
+        categorias = Categoria.objects.all()
+        sucursales = Sucursal.objects.all()
+        peluqueros = Peluquero.objects.all()
+        productos = Producto.objects.all()
+        cortes = Corte.objects.all()
+        contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje, "usuario_actual":usuario_actual}
+        return render(request, "administracion.html", contexto)
+
+    else:
+        
+        mensaje=""
+        categorias = Categoria.objects.all()
+        sucursales = Sucursal.objects.filter(usuario=usuario_actual)
+        peluqueros = Peluquero.objects.filter(usuario=usuario_actual)
+        productos = Producto.objects.filter(usuario=usuario_actual)
+        cortes = Corte.objects.all()
+        contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje}
+        return render(request, "administracion.html", contexto)
 
 
 
@@ -502,4 +534,17 @@ class persona:
         self.edad=edad
         super().__init__()
 
+
+#FALTA : 
+
+#def registrate : 
+#def Contactanos con su modelo 
+#Creacion y consumo de API
+#Carrusel  de index (everet)
+#
+#
+#
+#
+#
+#
 

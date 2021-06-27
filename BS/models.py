@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import TextField
 
 # Create your models here.
 
@@ -18,6 +19,8 @@ class Producto(models.Model):
     publicado = models.BooleanField(default=False)
     portada = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    usuario = models.CharField(null=True, max_length=30)
+    comentario = models.TextField(default="Sin comentarios")
 
     def __str__(self):
         return "Numero:"+str(self.id_auto_inc)
@@ -34,6 +37,8 @@ class Sucursal(models.Model):
     foto = models.ImageField(upload_to='media/sucursal', null=True)
     mapa = models.CharField(max_length=500, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    usuario = models.CharField(null=True, max_length=30)
+    comentario = models.TextField(default="Sin comentarios")
 
     def __str__(self):
         return "Numero:"+str(self.id_auto_inc)
@@ -47,6 +52,8 @@ class Peluquero(models.Model):
     publicado = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     Sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
+    usuario = models.CharField(null=True, max_length=30)
+    comentario = models.TextField(default="Sin comentarios")
 
 class Corte(models.Model):
     id_auto_inc = models.AutoField(primary_key=True)
@@ -56,6 +63,7 @@ class Corte(models.Model):
     comentario = models.TextField(null=True)
     peluquero = models.ForeignKey(Peluquero, on_delete=models.CASCADE, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
+    
     
     def __str__(self):
         return "Numero:"+str(self.id_auto_inc)

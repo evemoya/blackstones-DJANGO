@@ -29,6 +29,11 @@
     margin: 15px;
 }
 
+#sucursal .contenedor a {
+    text-decoration: none;
+    color: white;
+}
+
 #sucursal .contenedor img {
     width: 250px;
     height: 250px;

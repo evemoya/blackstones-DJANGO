@@ -43,20 +43,19 @@
             <a href="{% url 'AGENDARHORA' %} ">Agenda tu hora</a>
             <a href="{% url 'TIENDA' %}">Tienda</a>
             <a href="">Contactanos</a>
-            <a href="{% url 'REGCORTE' %}">Envia tu corte</a> {% if user.is_authenticated %}
+            <a href="{% url 'REGCORTE' %}">Envia tu corte</a> 
+            {% if user.is_authenticated %}
             <a href="{% url 'ADM' %} ">Administracion</a>
             <a href="{% url 'CERRAR'%}">Cerrar sesion</a>
-            <a href="">Bienvenido: {{user.first_name}}</a> {% else %}
+            <a href="">Bienvenido: {{user.first_name}}</a> 
+            {% else %}
             <a href="{% url 'LOGIN' %}">Inicia sesion</a>
             <a href="{% url 'REGISTRATE' %}">Registrate</a> {% endif %}
 
 
-
-
-
-
-            <input class="buscador" type="text" placeholder="  ¿Que buscas?">
-
+<!-- BUSCADOR MENU
+            <input class="buscador" type="text" action="{% url 'BUSCARTXT' %}" method="post"  placeholder=" ¿Que buscas?">
+-->
 
         </nav>
         <nav id="contenedor-logo-principal">

@@ -87,7 +87,7 @@
 <div style="text-align: center; color: red;">{{mensaje}} </div>
 
 <section id="Admin_productos">
-    <div style="text-align: center; font-size: xx-large;">Administracion de Productos</div>
+    <div style="text-align: center; font-size: xx-large; color:white">Administracion de Productos</div>
 
     <div>
         <table class="table table-dark table-hover">
@@ -102,7 +102,12 @@
                     <th>CATEGORIA </th>
                     <th>PUBLICADO</th>
                     <th>PORTADA</th>
+                    <th>COMENTARIO</th>
                     <th>OPERACIONES</th>
+                    {% if user.first_name == "ADM" %}
+                    <th>USUARIO</th>
+                    {% endif %}
+
                 </tr>
             </thead>
             <tbody>
@@ -134,11 +139,17 @@
                         <div style="text-align: center;">❌</div>
                         {% endif %}
                     </td>
+                    <td>{{producto.comentario}}</td>
+
                     <td>
                         <button class="btn btn-outline-danger" onclick="eliminar('{{producto.nombre}}')">Eliminar</button>
                         <button class="btn btn-outline-warning" onclick="modificar_prod('{{producto.nombre}}')"> Modificar</button>
                     </td>
 
+
+                    {% if user.first_name == "ADM" %}
+                    <td>{{producto.usuario}}</td>
+                    {% endif %}
                 </tr>
 
 
@@ -150,7 +161,7 @@
 
 
 <section id="Admin_Peluqueros">
-    <div style="text-align: center; font-size: xx-large;">Administracion de Peluqueros</div>
+    <div style="text-align: center; font-size: xx-large; color:white">Administracion de Peluqueros</div>
 
 
     <div>
@@ -166,7 +177,11 @@
                     <th>SUCURSAL</th>
                     <th>CATEGORIA </th>
                     <th>PUBLICADO</th>
+                    <th>COMENTARIO</th>
                     <th>OPERACIONES</th>
+                    {% if user.first_name == "ADM" %}
+                    <th>USUARIO</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -182,6 +197,7 @@
                     </td>
                     <td>{{peluquero.Sucursal.nombre}}</td>
                     <td>{{peluquero.categoria.nombre}}</td>
+
                     <td>
                         {% if peluquero.publicado %}
                         <div style="text-align: center;">✅</div>
@@ -189,11 +205,16 @@
                         <div style="text-align: center;">❌</div>
                         {% endif %}
                     </td>
+                    <td>{{peluquero.comentario}}</td>
 
                     <td>
                         <button class="btn btn-outline-danger" onclick="eliminar('{{peluquero.nombre}}')">Eliminar</button>
                         <button class="btn btn-outline-warning" onclick="modificar_pelu('{{peluquero.nombre}}')"> Modificar</button>
                     </td>
+
+                    {% if user.first_name == "ADM" %}
+                    <td>{{peluquero.usuario}}</td>
+                    {% endif %}
 
                 </tr>
 
@@ -205,7 +226,7 @@
 </section>
 
 <section id="Admin_SUCURSALES">
-    <div style="text-align: center; font-size: xx-large;">Administracion de Sucursales</div>
+    <div style="text-align: center; font-size: xx-large;color:white">Administracion de Sucursales</div>
 
 
     <div>
@@ -223,7 +244,11 @@
                     <th>FOTO Sucursal</th>
                     <th>CATEGORIA </th>
                     <th>PUBLICADO</th>
+                    <th>COMENTARIO</th>
                     <th>OPERACIONES</th>
+                    {% if user.first_name == "ADM" %}
+                    <th>USUARIO</th>
+                    {% endif %}
                 </tr>
             </thead>
 
@@ -253,12 +278,16 @@
                         <div style="text-align: center;">❌</div>
                         {% endif %}
                     </td>
+                    <td>{{sucursal.comentario}}</td>
 
                     <td>
                         <button class="btn btn-outline-danger" onclick="eliminar('{{sucursal.nombre}}')">Eliminar</button>
                         <button class="btn btn-outline-warning" onclick="modificar_sucu('{{sucursal.nombre}}')"> Modificar</button>
                     </td>
-                
+                    {% if user.first_name == "ADM" %}
+                    <td>{{sucursal.usuario}}</td>
+                    {% endif %}
+
                 </tr>
                 {% endfor %}
             </tbody>
@@ -268,7 +297,7 @@
 
 
 <section id="Admin_Cortes">
-    <div style="text-align: center; font-size: xx-large;">Administracion de Cortes</div>
+    <div style="text-align: center; font-size: xx-large;color:white">Administracion de Cortes</div>
 
     <div>
         <table class="table table-dark table-hover">
@@ -317,6 +346,7 @@
         </table>
     </div>
 </section>
+
 
 
 {% endblock contenido %} {% block js %}

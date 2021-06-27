@@ -18,12 +18,11 @@
 * {
     margin: 0%;
     padding: 0%;
-    /*box-sizing: border-box*/
-    ;
 }
 
 body {
     background: rgb(17, 16, 16);
+    background-image: url(../img/cortes_y_mas/mennu2.jpg);
 }
 
 header {
@@ -50,6 +49,10 @@ p {
 
 }*/
 
+#linea {
+    background: rgb(17, 16, 16);
+}
+
 #contenedor-logo-principal {
     width: fit-content;
     display: flex;
@@ -63,7 +66,7 @@ p {
 }
 
 footer .footer-pie {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     text-align: center;
     /*padding: center;*/
     color: seashell;
