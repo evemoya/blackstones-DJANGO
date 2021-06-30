@@ -21,9 +21,10 @@ from django.conf import settings            # IMPORTAR ARCHIVO @SETTINGS PY@
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('BS.urls')),
-    
-    
+    path('', include('api.urls')),
+        
 ] 
+
 #incluir en el interior del path las ubicaciones del dir. media 
 
 if settings.DEBUG:

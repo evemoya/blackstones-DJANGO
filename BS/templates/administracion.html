@@ -4,7 +4,6 @@
 
 
 <div style="text-align: center; text-decoration: none;">
-
     <LI style="text-decoration: none; color: white;">
         <UL>
             <a href=" {% url 'REGPROD' %} ">REGISTRO PRODUCTO</a>
@@ -86,10 +85,71 @@
 
 <div style="text-align: center; color: red;">{{mensaje}} </div>
 
+
+<section id="linea">
+    <br>
+</section>
+ {% if user.first_name == "ADM" %}
+
+                   
+<section>
+    <div style="text-align: center; font-size: xx-large;color:white">API PRODUCTOS PUBLICADOS</div>
+    {% for api in productosAPI %}
+    <div>
+        <p> nombre:{{api.nombre}} - Precio {{api.precio}}</p>
+    </div>
+    {% endfor %}
+</section>
+
+<section id="linea">
+    <br>
+</section>
+
+<section>
+    <div style="text-align: center; font-size: xx-large;color:white">API PRODUCTO EN PORTADA</div>
+    {% for api in productoPortadaAPI %}
+    <div>
+        <p> nombre:{{api.nombre}} - Precio {{api.precio}}</p>
+    </div>
+    {% endfor %}
+</section>
+
+
+
+<section id="linea">
+    <br>
+</section>
+
+
+<section id="linea">
+    <br>
+</section>
+
+<section>
+    <div style="text-align: center; font-size: xx-large;color:white">API PELUQUEROS TODOS</div>
+    {% for api in peluquerosAPI %}
+    <div>
+        <p> nombre:{{api.nombre}} - APODO: {{api.apodo}} - Sucursal: {{api.Sucursal}} </p>
+    </div>
+    {% endfor %}
+</section>
+
+<section id="linea">
+    <br>
+</section>
+
+
+
+ {% endif %}
+
 <section id="Admin_productos">
     <div style="text-align: center; font-size: xx-large; color:white">Administracion de Productos</div>
 
     <div>
+        <div style="text-align: center; color: red;">
+            <p>Productos publicados por : </p>
+            {{usuario_actual}} {{cantproductos}}
+        </div>
         <table class="table table-dark table-hover">
             <thead>
 
@@ -162,14 +222,17 @@
 
 <section id="Admin_Peluqueros">
     <div style="text-align: center; font-size: xx-large; color:white">Administracion de Peluqueros</div>
-
+    <div style="text-align: center; color: red;">
+        <p>Peluqueros publicados por : </p>
+        {{usuario_actual}} {{cantpeluqueros}}
+    </div>
 
     <div>
         <table class="table table-dark table-hover">
             <thead>
 
                 <tr>
-
+                    <th>id_auto_inc</th>
                     <th>NOMBRE</th>
                     <th>apodo</th>
                     <th>DESCRIPCION</th>
@@ -188,6 +251,7 @@
                 {% for peluquero in peluqueros %}
 
                 <tr>
+                    <td>{{peluquero.id_auto_inc}}</td>
                     <td>{{peluquero.nombre}}</td>
                     <td>{{peluquero.apodo}}</td>
                     <td>{{peluquero.descripcion}}</td>
@@ -227,7 +291,10 @@
 
 <section id="Admin_SUCURSALES">
     <div style="text-align: center; font-size: xx-large;color:white">Administracion de Sucursales</div>
-
+    <div style="text-align: center; color: red;">
+        <p>Sucursales publicados por : </p>
+        {{usuario_actual}} {{cantsucursales}}
+    </div>
 
     <div>
         <table class="table table-dark table-hover">
@@ -336,6 +403,43 @@
 
                     <td>
                         <button class="btn btn-outline-danger" onclick="eliminar('{{corte.nombre}}')">Eliminar</button>
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+<section id="Admin_Cortes">
+    <div style="text-align: center; font-size: xx-large;color:white">Administracion de Comentarios</div>
+
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+
+                <tr>
+                    <th>NOMBRE - apellido</th>
+                    <th>CORREO</th>
+                    <th>COMENTARIO </th>
+                    <th>OPERACIONES</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for cont in contacto %}
+                <tr>
+                    <td>{{cont.nombre}} - {{cont.apellido}}</td>
+                    <td>{{cont.correo}}</td>
+                    <td>{{cont.comentario}}</td>
+
+                    <td>
+                        <button class="btn btn-outline-danger" onclick="eliminar('{{cont.nombre}}')">Eliminar</button>
                     </td>
 
                 </tr>

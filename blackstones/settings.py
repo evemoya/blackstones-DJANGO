@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BS', # aplicacion creada en django
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -15,15 +15,12 @@
     
     {% block css %} {% endblock css %}
     
-
-
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CRaleway:500,600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-
     <!-- Bloque para CSS  requeridoo-->
 
 
@@ -42,8 +39,10 @@
             <a href="{% url 'GALE' %} ">Galeria</a>
             <a href="{% url 'AGENDARHORA' %} ">Agenda tu hora</a>
             <a href="{% url 'TIENDA' %}">Tienda</a>
-            <a href="">Contactanos</a>
+            <a href="{% url 'CONTACTANOS' %}">Contactanos</a>
             <a href="{% url 'REGCORTE' %}">Envia tu corte</a> 
+            
+            
             {% if user.is_authenticated %}
             <a href="{% url 'ADM' %} ">Administracion</a>
             <a href="{% url 'CERRAR'%}">Cerrar sesion</a>
@@ -64,12 +63,12 @@
         </nav>
 
     </header>
-
+<h5 Nuestros Ultimos Cortes</h5>
     <main>
         <div class="banner">
             <div class="contenedor">
                 <h2>Black Stones Barber</h2>
-                <p>Buscas tu corte ideal, atrevete con nosotras!</p>
+                <p style="background-color: rgba(0, 0, 0, 0.5); color:white ; ">Buscas tu corte ideal, atrevete con nosotros!</p>
                 <a href="{% url 'INFO' %}">Informaciones</a>
             </div>
 
@@ -97,7 +96,6 @@
             </div>
 
         </section>
-
     </footer>
 
 
@@ -105,9 +103,9 @@
     {% block js %} {% endblock js %}
 
 
-    <!-- JS BASE -->
+    <!-- JS BASE 
     <script src="{% static 'js/main.js' %}"></script>
-   
+   -->
 </body>
 
 </html>

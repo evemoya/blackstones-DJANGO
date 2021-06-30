@@ -4,7 +4,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import  index, galeria,ficha,administracion,cerrar_sesion,filtro_cate,eliminar, modificar, registrate ,filtro_categoria, buscar_texto,  login, agendarhora, informaciones, tienda, regprod, regpelu, regsucu,regcorte,modprod,modsucu,modpelu, Quienes_somos, sucursal, barberos
+from .views import  index, galeria,ficha,administracion,cerrar_sesion,filtro_cate,eliminar, contactanos, modificar, registrate ,filtro_categoria, buscar_texto,  login, agendarhora, informaciones, tienda, regprod, regpelu, regsucu,regcorte,modprod,modsucu,modpelu, Quienes_somos, sucursal, barberos
 
 
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     path ('Quiene_somos/', Quienes_somos, name='QUIENESSOMOS'),
     path ('regcorte/',regcorte, name='REGCORTE'),
     path ('agenda/',agendarhora, name='AGENDARHORA'),
+    path ('contactanos/',contactanos, name='CONTACTANOS'),
 
     #contenido / Fichas
     path ('ficha/<id>/', ficha, name='FICHA'),

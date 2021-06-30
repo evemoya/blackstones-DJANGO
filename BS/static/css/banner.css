@@ -1,82 +1,68 @@
-
-.banner{
+.banner {
     padding-top: 50px;
     width: 100%;
-    height: 550px;
+    height: 400px;
     animation: banner 20s infinite linear alternate;
     background-size: 100% 100%;
-    position:relative;
+    position: relative;
     /*display: flex;
     justify-content: center;*/
-
-    
-    
-    
 }
 
-@keyframes banner{
-    0%, 24%{
+@keyframes banner {
+    0%,
+    24% {
         background-image: url(../img/logos/banner/banner1.jpg);
     }
-    25%, 40%{
+    25%,
+    40% {
         background-image: url(../img/logos/banner/banner2.jpg);
     }
-    41%, 60%{
+    41%,
+    60% {
         background-image: url(../img/logos/banner/banner3.jpg);
     }
-    61%, 80%{
+    61%,
+    80% {
         background-image: url(../img/logos/banner/banner4.jpg);
     }
-    81%, 100%{
+    81%,
+    100% {
         background-image: url(../img/cortes_y_mas/shampoo.jpg);
-        
     }
-
-
 }
 
-.banner .contenedor{
+.banner .contenedor {
     position: absolute;
-    top: 250px;
+    top: 200px;
     padding: 10px;
     left: 50px;
     color: white;
-    font-family: 'New Tegomin', serif;  
-    
-    
-
-
+    font-family: 'New Tegomin', serif;
 }
 
-.banner h2{
+.banner h2 {
     font-size: 40px;
-    
-    
-   
 }
 
-.banner p{
+.banner p {
     width: fit-content;
-
 }
 
-.banner a{
+.banner a {
     width: fit-content;
     margin-top: 15px;
     display: block;
     width: 150px;
     padding: 10px;
-    border: solid 3px white; 
+    border: solid 3px white;
     text-decoration: none;
     color: white;
     border-radius: 8px;
-    
 }
 
-.banner a:hover{
+.banner a:hover {
     background: rgb(129, 52, 38);
     border-radius: 8px;
     cursor: pointer;
 }
-
-

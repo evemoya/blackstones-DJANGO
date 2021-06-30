@@ -2,12 +2,9 @@
     padding-top: 50px;
 }
 
-.contenedor_sucu1
-/*img*/
-
-{
+.contenedor_sucu1 {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background: url(../img/Mauro/banner-maipu.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -84,7 +81,7 @@
 
 .img-sucu-maipu {
     width: 80%;
-    height: 100vh;
+    height: 50vh;
     margin: auto;
     background: url(../img/cortes_y_mas/barber.jpg) no-repeat center;
     background-size: cover;

@@ -1,121 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>black stones</title>
-    <link rel="icon" type="image/png" href="img/logos/black stones.png">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/contactanos.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+{% block contenido %}
 
 
-</head>
-
-<body>
-    <div class="contenido-global">
-        <header>
-            <input type="checkbox" name="" id="menu-bar">
-            <label class="icon-align-justify" for="menu-bar"></label>
-            <nav class="menu">
-                <a href="index.html">Home</a>
-                <a href="Quienes_somos.html">Quienes somos</a>
-                <a href="Servicios.html">Servicios</a>
-                <a href="galeria.html">Galeria</a>
-                <a href="agendarhora.html">Agenda tu hora</a>
-                <a href="tienda.html">Tienda</a>
-                <a href="iniciosesion.html">Inicia sesion</a>
-                <a href="registrate.html">Registrate</a>
-                <a href="contactanos.html">Contactanos</a>
-
-
-
-            </nav>
-
-            <nav id="contenedor-logo-principal">
-                <img src="img/logos/black stones.png" alt="">
-                <h1>Black Stones Barber</h1>
-
-            </nav>
-
-
-
-
-        </header>
 
         <main>
-            <div class="banner">
-                <div class="contenedor">
-
-                    <h2>Black Stones Barber</h2>
-                    <p>Buscas tu corte ideal, atrevete con nosotras!</p>
-                    <a href="informaciones.html">Informaciones</a>
-                </div>
-
-
             </div>
             <section class="form-re" >
                 <article>
                     <h4>Formulario de contacto</h4>
-                    <form action="" method="">
-                        <input class="nombre" type="text" name="textNombre " id="Nombre"placeholder="Nombre" required pattern="[a-z A-Z]+" >
-                        <input class="apellido" type="text" name="textNombre " id="Nombre"placeholder="Apellido" required pattern="[a-z A-Z]+" >
+                    <form action="{% url 'CONTACTANOS' %}" method="post">
+                        {% csrf_token %}
+
+                        <input class="controls" type="text" name="textNombre" id="Nombre"placeholder="Nombre" required pattern="[a-z A-Z]+" >
+                        <input class="controls" type="text" name="textApellido" id="Nombre"placeholder="Apellido" required pattern="[a-z A-Z]+" >
                         <input class="controls" type="email" name="txtEmail" id="Email" placeholder="Email" required="">
                         <textarea class="text-area" name="comentario" id="comentario" cols="30" rows="10" placeholder="Escriba aquí su comentario..."></textarea>
                         <input class="botons" type="submit" value="Enviar" 
                         onclick="enviar()">
-                        
-
-                    </form>
-                   
+                    </form>                  
                 </article>
-                
-
             </section>
-
-
-
-
-
-
         </main>
 
-
-        <footer>
-            <section class="footer-pie">
-                <div class="contenedor">
-                    <p>®Black stones barber 2021- Sitio web</p>
-
-                </div>
-                <div class="redes">
-                    <a href="https://www.facebook.com/labarberaperu">
-                        <img src="img/footer/face.png" alt="">
-
-                    </a>
-                    <a href="https://www.instagram.com/lefemmebarber/">
-                        <img src="img/footer/instagram.png" alt="">
-
-                    </a>
-
-
-                </div>
-
-            </section>
-
-
-        </footer>
-
-        
-
-
-    </div>
     <script src="js/main.js"></script>
 
-</body>
-
-</html>
+{% endblock contenido %}

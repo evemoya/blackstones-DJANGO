@@ -90,3 +90,14 @@ footer .footer-pie img {
     display: flex;
     justify-content: center;
 }
+
+.carrusel-index {
+    display: flex;
+    justify-content: space-around;
+}
+
+.carusel {
+    display: flex;
+    justify-content: center;
+    max-height: 80%;
+}

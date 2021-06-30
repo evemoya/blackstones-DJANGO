@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block contenido %}
 
 <section class="form-re">
+    
     <form class="form-registro" action="{% url 'REGCORTE' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="form-titutlo"> Ingreso su Corte</h2>

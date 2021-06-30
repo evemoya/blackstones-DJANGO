@@ -1,29 +1,43 @@
-{% extends "base.html" %} {% load static %} {% block contenido %}
+{% extends "base.html" %} {% load static %}
+{% block css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+{% endblock css %}
+ {% block contenido %}
 
-        <section id="banner_barbers">
-            <div class="info-barbers">
-                <img src="{{peluquero.foto.url}}" alt="">
+    <section id="banner_barbers">
+        <div class="info-barbers">
+        <div class=carusel>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{peluquero.foto.url}}" class="d-block w-100" height="400px">
+    </div>
+    {% for reg in cortes %}
+    <div class="carousel-item">
+      <img src="{{reg.foto.url}} " class="d-block w-100 " height="400px">
+    </div>
+    {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
                 <!--img/Mauro/barber3.jpg barber3 -->
                 <h2>"Apodo": {{peluquero.apodo}} </h2>
                 <h3>"Nombre":{{peluquero.nombre}} </h3>
-                <p>"descripcion":{{peluquero.descripcion}}</p>
+                <p>{{peluquero.descripcion}}</p>
 
             
 
             </div>
-        </section>
+    </section>
 
-        <section id="destacados">
-            <h2>Trabajos Destacado</h2>
-            <div class="imagenes">
-                {% for corte  in cortes %}
-                    <img class="corte" src="{{corte.foto.url}}" alt="">
-        {% endfor %}
-            </div>
-        </section>
+
     </main>
 
 
 {% endblock contenido %}
 
-
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
+{% endblock js %}

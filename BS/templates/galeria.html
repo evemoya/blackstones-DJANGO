@@ -52,7 +52,7 @@
 
         {% endfor %} {% for reg in productos %}
         <article>
-            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title="{{reg.descripcion}}">
+            <a href="{{reg.foto.url}}" data-lightbox="galeria" data-title="{{reg.nombre}}{{reg.descripcion}}">
                 <img src="{{reg.foto.url}}" alt="">
             </a>
         </article>

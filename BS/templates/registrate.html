@@ -1,10 +1,14 @@
+#MODIFICAR REGISTRATE.HTML
 {% extends "base.html" %} {% load static %} {% block contenido %}
 
 
 <section class="form-re">
     <article>
         <h4>Registrate</h4>
-        <form action="" method="post" action="" onsubmit="return validarPass()">
+        <form method="post" action="{% url 'REGISTRATE' %}" onsubmit="return validarPass()">
+            {% csrf_token %}
+
+
             <input class="controls" type="text" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese su Nombre" required>
             <input class="controls" type="text" type="text" name="txtApellido" id="txtApellido" placeholder="Ingrese su Apellido" required>
             <input class="controls" type="text" type="email" name="txtEmail" id="txtEmail" placeholder="Ingrese su Correo" required>
@@ -12,7 +16,7 @@
                 <h5> Datos de Acceso</h5>
             </center>
             <br>
-            <input class="controls" type="text" type="text" name="txtApellido" id="txtApellido" placeholder="Nombre de usuario" required>
+            <input class="controls" type="text" type="text" name="txtUser" id="txtApellido" placeholder="Nombre de usuario" required>
             <input class="controls" type="password" name="txtPass1" id="txtPass1" placeholder="nueva contraseña" required>
             <center>
                 <h5> (la contraseña debe tener un minimo de 6 caracteres y un max de 32)</h5>
