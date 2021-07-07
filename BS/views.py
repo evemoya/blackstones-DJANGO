@@ -52,7 +52,7 @@ def index(request):
     cortes = Corte.objects.filter(publicado=True)[:3]
     contexto = {"productos":productos, "categoria": categoria, "cortes" :cortes}
     #Consumo API 
-    response = requests.get('http://127.0.0.1:8053/api/productos/')
+    response = requests.get('http://127.0.0.1:8000/api/productos/')
     productosAPI = response.json()
     contexto["productosAPI"] = productosAPI
     #Fin Consumo API
@@ -569,6 +569,7 @@ def regprod(request):
 
 
 @login_required(login_url='/login/')
+@permission_required('BS.delete_corte', login_url='/login/')
 def administracion(request):
     usuario_actual = request.user.username
     if usuario_actual == "admin":
@@ -584,16 +585,16 @@ def administracion(request):
         cantsucursales = Sucursal.objects.filter(usuario=usuario_actual).count() 
         contexto = {"sucursales": sucursales, "peluqueros": peluqueros, "productos": productos, "cortes": cortes, "categorias":categorias, "mensaje":mensaje, "usuario_actual":usuario_actual, "contacto":contacto, "cantproductos":cantproductos, "cantsucursales":cantsucursales, "cantpeluqueros":cantpeluqueros}
         #Consumo API 1 
-        response = requests.get('http://127.0.0.1:8053/api/productos/')
+        response = requests.get('http://127.0.0.1:8000/api/productos/')
         productosAPI = response.json()
         contexto["productosAPI"] = productosAPI
 
 
-        response = requests.get('http://127.0.0.1:8053/api/peluqueros/')
+        response = requests.get('http://127.0.0.1:8000/api/peluqueros/')
         peluquerosAPI = response.json()
         contexto["peluquerosAPI"] = peluquerosAPI
 
-        response = requests.get('http://127.0.0.1:8053/api/productos_portada/')
+        response = requests.get('http://127.0.0.1:8000/api/productos_portada/')
         productoPortadaAPI = response.json()
         contexto["productoPortadaAPI"] = productoPortadaAPI
 
@@ -624,8 +625,5 @@ def administracion(request):
 
 
 
-
-#FALTA : 
-#Creacion y CONSUO de API
 
 
