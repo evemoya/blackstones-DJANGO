@@ -64,7 +64,6 @@ class Corte(models.Model):
     peluquero = models.ForeignKey(Peluquero, on_delete=models.CASCADE, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     
-    
     def __str__(self):
         return "Numero:"+str(self.id_auto_inc)
 
